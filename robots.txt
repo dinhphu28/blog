@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://alshedivat.github.io/blog/sitemap.xml
+Sitemap: https://blog.dinhphu28.com/sitemap.xml
