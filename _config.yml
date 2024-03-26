@@ -4,7 +4,7 @@
 
 title: Dinh Phu Nguyen dinhphu28 # the website title (if blank, full name will be used instead)
 first_name: Dinh Phu
-middle_name:
+middle_name: 
 last_name: Nguyen
 email: dinhphu.nguyen.20@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -15,7 +15,7 @@ footer_text: >
   Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: /assets/img/favicon.ico # ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: favicon.ico # ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://blog.dinhphu28.com # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
