@@ -23,5 +23,3 @@ Hi, I'm Dinh Phu, a software engineer at [FPT Corporation](https://www.fpt.com).
 With me, learning is a lifelong journey, more knowledge, more experience, more fun. Not only software knowledge can help me to solve problems, but also the knowledge of other fields can help me to think and solve problems in a different way. I'm always open to new ideas and new ways of thinking.
 
 I'm also interested in practical research, which can help me to learn and apply new technologies to solve real-world problems. I'm always looking for new opportunities to work on interesting projects, collaborate with other people, and learn new things.
-
-Connect with me on [LinkedIn](https://www.linkedin.com/in/dinhphu28) or [GitHub](https://github.com/dinhphu28)
