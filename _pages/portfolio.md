@@ -7,4 +7,4 @@ nav: false
 nav_order: 6
 ---
 
-{% include_relative portfolio_site/index.html %}
+{% include_relative pre-rendered/index.html %}
