@@ -11,7 +11,7 @@ toc:
   beginning: true
 ---
 
-### SOLID principles
+### Introduction
 
 SOLID stands for:
 
@@ -109,7 +109,7 @@ This principle advises software designers to avoid depending on things that they
 
 The code that implements high-level policy should not depend on the code that implements low-level details. Rather, details should depend on policies. - Robert C. Martin
 
-###### Some references:
+**_Some references:_**
 
 - https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#open-closed-principle
 - Clean Architecture - Robert C. Martin [Book]
