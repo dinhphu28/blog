@@ -55,8 +55,8 @@ public class Employee {
 
   // (1)
   public EmployeeOutput toOutput() {
-    EmployeeOutput employeeOutput = new EmployeeOutput(/* something here */);
-    return employeeOutput;
+    EmployeeOutput output = new EmployeeOutput(/* something here */);
+    return output;
   }
 
   public void saveToDatabase(Employee employee) {
