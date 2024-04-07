@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /portfolio/
-title: "Portfolio"
+title: "portfolio"
 description: "Redirect to portfolio page."
 nav: true
 nav_order: 6
