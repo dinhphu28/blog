@@ -3,6 +3,8 @@ layout: page
 permalink: /portfolio/
 title: "Portfolio"
 description: "Redirect to portfolio page."
+nav: true
+nav_order: 6
 redirect: https://portfolio.dinhphu28.com
 ---
 
