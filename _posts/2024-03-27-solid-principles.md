@@ -91,6 +91,93 @@ In additional, we should not set name `EmployeeOutput` and method name `toOutput
 
 Bertrand Meyer made this principle famous in the 1980s. The gist is that for software systems to be easy to change, they must be designed to allow the behavior of those systems to be changed by adding new code, rather than changing existing code. - Robert C. Martin
 
+##### Explaination
+
+A module should be:
+
+- Easy to extend
+- Not allowed to modify
+
+For example:
+
+```java
+public class Dog {
+  public void bark() {
+    // some code here
+  }
+}
+
+public class Cat {
+  public void say() {
+    // some code here
+  }
+}
+
+public class AnimalSaying {
+  public void say(AnimalType animalType) {
+    switch (animalType) {
+      case DOG:
+        Dog dog = new Dog();
+        dog.bark();
+        break;
+      case CAT:
+        Cat cat = new Cat();
+        cat.say();
+        break;
+      default:
+        throw RuntimeException("This animal does not exist!")
+    }
+  }
+}
+```
+
+In this example, when we want to add new animal, e.g. Duck, we need to add class `Duck` and edit class `AnimalSaying`. It make the code hard to extend and quite risky.
+
+We can re-write as below:
+
+```java
+public abstract class Animal {
+  public void say();
+}
+
+public class Dog extends Animal {
+  @Override
+  public void say() {
+    // some code here
+  }
+}
+
+public class Cat extends Animal {
+  @Override
+  public void say() {
+    // some code here
+  }
+}
+
+public class AnimalSaying {
+  private Animal animal;
+  public AnimalSaying(Animal animal) {
+    this.animal = animal;
+  }
+  public void say() {
+    animal.say()
+  }
+}
+```
+
+When we want to add `Duck`, we just need to add
+
+```java
+public class Duck extends Animal {
+  @Override
+  public void say() {
+    // some code here
+  }
+}
+```
+
+Follow Open-Close principle, everything becomes easier to extends and does not make old feature failure because we don't update it.
+
 ### The Liskov Substitution Principle (LSP)
 
 > Let q(x) be a property provable about objects of x of type T. Then q(y) should be provable for objects y of type S where S is a subtype of T.
