@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://blog.dinhphu28.com/sitemap.xml
+Sitemap: https://www.dinhphu28.com/sitemap.xml
