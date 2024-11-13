@@ -34,7 +34,17 @@ With macOS, an error occur when run above command because of UTF-8. Just add LC_
 < /dev/urandom LC_ALL=C tr -dc '[:graph:]' | head -c32; echo
 ```
 
-For more security, I suggest using /dev/urandom because it is really a random value, but in case that ...
+#### Random
+
+/dev/random takes the random values from the entropy pool. If the entropy pool is empty, it will be blocked reading.
+
+#### URandom (Unlimited Random)
+
+/dev/urandom is similar to /dev/random but in case that entropy pool is empty, it generate value using hashing argorithm such as: SHA, MD5, ...
+
+#### In term of security
+
+Because of high-quality randomness of /dev/random, it's suitable for a password or a task focus on security.
 
 ### Using openssl
 
