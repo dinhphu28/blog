@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Generate password with command line in Linux or macOS
-date: 2024-11-09 16:16:00-0700
+date: 2024-11-09 16:16:00+0700
 description: If you usually work with command line in Linux or macOS, you can use it to generate password without installing any additional application.
 tags: cli password-generating command-line linux macos
 categories: utilities
