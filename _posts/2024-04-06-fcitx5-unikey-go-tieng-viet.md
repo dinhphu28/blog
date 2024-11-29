@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Mình đã chuyển sang Fcitx5 thay vì IBus Bamboo và IBus Unikey
-date: 2024-04-06 16:16:00-0700
+date: 2024-04-06 16:16:00+0700
 description: Bộ gõ Tiếng Việt thay thế cho IBus Unikey và IBus Bamboo
 tags: fcitx5 unikey vietnamese
 categories: utilities
