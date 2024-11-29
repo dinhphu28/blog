@@ -9,6 +9,9 @@ giscus_comments: true
 related_posts: false
 toc:
   beginning: true
+mermaid:
+  enabled: true
+  zoomable: true
 ---
 
 ### Introduction
@@ -24,6 +27,20 @@ In this post, we will discuss the Hub & Spoke VPN and how it solve the problem o
 I'm a software engineer usually working in the office. But sometimes I need to work remotely from home, coffee shop, or other place. And I also want to build a server that can be accessed from anywhere securely.
 
 ### What we need
+
+```mermaid
+architecture-beta
+    group topo(cloud)[TOPOLOGY]
+
+    service hub(internet)[Hub] in topo
+    service spoke1(server)[Home Server] in topo
+    service spoke2(server)[Office Computer] in topo
+    service spoke3(database)[Database] in topo
+
+    hub:T -- B:spoke1
+    hub:T -- B:spoke2
+    hub:T -- B:spoke3
+```
 
 - A secure & manageable network to setup VPN server (hub), so I will use my home network.
 - A device acts as a VPN server (hub), it can be an old computer, Raspberry Pi or any device that can run VPN server software.
@@ -57,12 +74,24 @@ I usually use this setup for:
 With me, working almost on the CLI, so with neovim, tmux, ssh and other tools, I can work seamlessly anywhere, any device which have terminal emulator and internet connection.
 I call this setup Unified Working Environment.
 
-### Disadvantages
+### Pros & Cons
 
-Because hub is a single point of failure, if it goes down, all spokes will lose connection to each other.
+#### Pros
 
-All traffic between spokes must go through the hub, so the hub can be a bottleneck. So if you have many spokes and need high bandwidth, you can consider a mesh network.
-I suggest Tailscale, it's easy to use and setup and can be used for free.
+- Centralized communication
+- Cost effective
+- Easy to control security
+
+#### Cons
+
+- Single point of failure
+
+  > Because hub is the central point, if it goes down, all spokes will lose connection to each other.
+
+- Bottleneck
+
+  > All traffic between spokes must go through the hub, so the hub can be a bottleneck. So if you have many spokes and need high bandwidth, you can consider a mesh network.
+  > I suggest Tailscale, it's easy to use and setup and can be used for free.
 
 ### Conclusion
 
