@@ -442,7 +442,7 @@ medium_zoom:
   version: "1.1.0"
   integrity: "sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc="
 mermaid:
-  version: "10.7.0"
+  version: "11.4.1"
   integrity: "sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="
 swiper:
   version: "11.0.5"
