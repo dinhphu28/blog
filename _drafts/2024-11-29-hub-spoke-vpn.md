@@ -29,17 +29,26 @@ I'm a software engineer usually working in the office. But sometimes I need to w
 ### What we need
 
 ```mermaid
-architecture-beta
-    group topo(cloud)[TOPOLOGY]
+flowchart TB
+    subgraph TOPOLOGY["<i class='mdi mdi-cloud-outline'></i> Topology"]
+        direction TB
 
-    service hub(internet)[Hub] in topo
-    service spoke1(server)[Home Server] in topo
-    service spoke2(server)[Office Computer] in topo
-    service spoke3(database)[Database] in topo
+        hub[<i class='fa fa-network-wired'></i> Hub]
+        homesrv[<i class='fa fa-server'></i> Home Server Expose 443/TCP]
+        officepc[<i class='fa fa-desktop'></i> Office Computer]
+        laptop[<i class='fa fa-laptop'></i> My Laptop]
+        phone[<i class='fa fa-mobile'></i> My Phone]
+        internet[<i class='mdi mdi-earth'></i> Internet]
+    end
 
-    hub:T -- B:spoke1
-    hub:T -- B:spoke2
-    hub:T -- B:spoke3
+    hub -.->|VPN Tunnel| laptop
+    hub -.->|VPN Tunnel| phone
+    hub -.->|VPN Tunnel| homesrv
+    hub -.->|VPN Tunnel| officepc
+
+    internet -.->|Public Access 443/TCP| hub
+    hub ---|NAT 443/TCP via Tunnel| homesrv
+
 ```
 
 - A secure & manageable network to setup VPN server (hub), so I will use my home network.
