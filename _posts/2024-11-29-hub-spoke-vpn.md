@@ -3,9 +3,6 @@ layout: post
 title: Hub and Spoke VPN, how it solve my working problem
 date: 2024-11-29 11:59:00-0400
 description: Hub & Spoke VPN is a VPN network topology that connects multiple remote peers (spokes) to a central location (hub) to provide secure communication between them.
-mermaid:
-  enabled: true
-  zoomable: true
 tags: vpn, network, security
 categories: networking
 giscus_comments: true
