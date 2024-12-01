@@ -6,7 +6,7 @@ description: Hub & Spoke VPN is a VPN network topology that connects multiple re
 mermaid:
   enabled: true
   zoomable: false
-tags: vpn, network, security
+tags: vpn network security
 categories: networking
 giscus_comments: true
 toc:
