@@ -3,7 +3,7 @@ layout: post
 title: P2P - UDP Hole Punching
 date: 2024-11-29 11:59:00+0700
 description: UDP hole punching is a technique for establishing bidirectional UDP connections between two networked devices behind NATs.
-tags: p2p, nat, stun, ice, network
+tags: p2p nat stun ice network
 categories: networking
 citation: true
 giscus_comments: true
