@@ -3,6 +3,9 @@ layout: post
 title: Why Build Your Own Certificate Authority
 date: 2025-07-14 14:30:00+0700
 description: Explore the challenges of managing secure identities in your infrastructure, and why setting up your own Certificate Authority (CA) is the right solution.
+mermaid:
+  enabled: true
+  zoomable: false
 tags: ssl ca openssl easy-rsa security pki
 categories: utilities
 citation: true
@@ -70,7 +73,7 @@ A best practice is to create:
 > Only use it when necessary to sign or revoke Intermediate CAs.
 
 ```mermaid
-flowchart TB
+graph TD
     RootCA["🛡️ Root CA (Offline) - Signs Intermediate CA"]
     CRLRoot["📄 Root CRL (Exported)"]
     IntermediateCA["🔄 Intermediate CA (Online) - Signs End-Entity Certs"]
