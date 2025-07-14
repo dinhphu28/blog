@@ -69,6 +69,24 @@ A best practice is to create:
 >
 > Only use it when necessary to sign or revoke Intermediate CAs.
 
+```mermaid
+graph TD
+    RootCA["🛡️ Root CA (Offline) - Signs Intermediate CA"]
+    CRLRoot["📄 Root CRL (Exported)"]
+    IntermediateCA["🔄 Intermediate CA (Online) - Signs End-Entity Certs"]
+    CRLInt["📄 Intermediate CRL"]
+    WebServer["🌐 Web Server"]
+    EmailCert["📧 Email Client"]
+    VPNCert["🔐 VPN Device"]
+
+    RootCA -->|Sign| IntermediateCA
+    RootCA -->|Publish| CRLRoot
+    IntermediateCA -->|Publish| CRLInt
+    IntermediateCA -->|Issue| WebServer
+    IntermediateCA -->|Issue| EmailCert
+    IntermediateCA -->|Issue| VPNCert
+```
+
 ## My Real-World Case
 
 Let me share a bit of context. In my home lab, I manage:
