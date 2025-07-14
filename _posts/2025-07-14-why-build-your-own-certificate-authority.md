@@ -70,7 +70,7 @@ A best practice is to create:
 > Only use it when necessary to sign or revoke Intermediate CAs.
 
 ```mermaid
-flowchart TD
+graph TB
     RootCA["🛡️ Root CA (Offline) - Signs Intermediate CA"]
     CRLRoot["📄 Root CRL (Exported)"]
     IntermediateCA["🔄 Intermediate CA (Online) - Signs End-Entity Certs"]
