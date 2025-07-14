@@ -12,6 +12,7 @@ toc:
 ---
 
 - Manage large number of users or devices in the organization environment is a challenge to:
+
   - Data security and privacy.
   - Trust.
   - Data and system integrity.
@@ -19,6 +20,7 @@ toc:
   - When phishing resistance is crucial.
 
 - Some use case:
+
   - Securing web servers
   - VPNs
   - Email
@@ -27,9 +29,11 @@ toc:
   - Mutual Authentication
 
 - Scalability and management:
+
   - Large user bases (using various resources)
 
 - Why not use self-signed certificate or public CA?
+
   - Self-signed certificate:
     - Not trusted by default.
     - Hard to manage.
@@ -38,6 +42,7 @@ toc:
     - Limited control over the certificate lifecycle.
 
 - Solution: Build your own SSL Certificate Authority (CA) with Easy-RSA.
+
   - Build Root CA and Intermediate CA.
 
 - Two-tier CA hierarchy:
@@ -48,6 +53,7 @@ Note that: The Root CA should be kept offline and only used to sign the Intermed
 The Intermediate CA can be used to sign end-entity certificates.
 
 - My case:
+
   - I have a home lab with multiple devices and services.
     - OpenVPN server
     - Microsoft 365

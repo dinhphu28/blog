@@ -15,11 +15,11 @@ toc:
 
 Managing a large number of users or devices in an organization - or even a home lab - introduces several challenges:
 
-- Data security and privacy  
-- Establishing trust between systems  
-- Ensuring integrity of data and systems  
-- Automating access and lifecycle management  
-- Providing phishing-resistant authentication  
+- Data security and privacy
+- Establishing trust between systems
+- Ensuring integrity of data and systems
+- Automating access and lifecycle management
+- Providing phishing-resistant authentication
 
 ## Use Cases for Certificate-Based Authentication
 
