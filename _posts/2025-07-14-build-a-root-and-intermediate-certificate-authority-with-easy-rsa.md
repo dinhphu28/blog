@@ -155,7 +155,7 @@ X509v3 Subject Alternative Name:
 To verify the client cert valid, we not only need the Root CA cert but also Intermediate CA (full chain of trust):
 `Root CA -> Intermediate CA -> Client cert`
 
-Most of SSL Tools or System use use client cert with fullchain (intermediate-a -> leaf) to verify the client with only Root CA cert.
+Most of SSL Tools or System use use client cert with fullchain (intermediate-ca -> leaf) to verify the client with only Root CA cert.
 
 ```sh
 cat /path/to/intermediate-ca/pki/ca.crt dinhphu.crt > dinhphu-fullchain.crt
