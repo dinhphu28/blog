@@ -63,7 +63,7 @@ authorityKeyIdentifier = keyid:always,issuer:always
 keyUsage = critical, cRLSign, keyCertSign
 ```
 
-## 🧷 Intermediate CA Setup
+## Intermediate CA Setup
 
 Repeat steps 1–3 in a new directory like `intermediate-ca`, then update `vars`:
 
