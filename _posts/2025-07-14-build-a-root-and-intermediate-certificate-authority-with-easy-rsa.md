@@ -11,9 +11,9 @@ toc:
   beginning: true
 ---
 
-> 📖 This post continues from [Part 1: Why Build Your Own Certificate Authority](/why-build-your-own-certificate-authority)
+> 📖 This post continues from [Part 1: Why Build Your Own Certificate Authority](/blog/2025/why-build-your-own-certificate-authority)
 
-## 📁 Root CA Setup
+## Root CA Setup
 
 ### 1. Download and Extract Easy-RSA
 
@@ -96,15 +96,15 @@ cp /path/to/root-ca/pki/ca.crt pki/root-ca.crt
 cat pki/ca.crt pki/root-ca.crt > pki/ca-chain.crt
 ```
 
-✅ You now have a functional Intermediate CA.
+You now have a functional Intermediate CA.
 
-## 📜 Issue Certificate for Microsoft 365 Authentication
+## Issue Certificate for Microsoft 365 Authentication
 
 ### 1. Create OpenSSL Config
 
 Save as `user_openssl.cnf`:
 
-```properties
+```ini
 [ req ]
 default_bits       = 384
 prompt             = no
@@ -145,7 +145,7 @@ openssl x509 -in pki/issued/dinhphu.crt -noout -text | grep -A5 "Subject Alterna
 
 Should contain your UPN like this:
 
-```properties
+```
 X509v3 Subject Alternative Name:
     otherName:1.3.6.1.4.1.311.20.2.3;UTF8:dinhphu@office.dinhphu28.com
 ```
@@ -161,7 +161,7 @@ Most of SSL Tools or System use use client cert with fullchain (intermediate-a -
 cat /path/to/intermediate-ca/pki/ca.crt dinhphu.crt > dinhphu-fullchain.crt
 ```
 
-## 📦 Create PFX Certificate
+## Create PFX Certificate
 
 ```sh
 openssl pkcs12 -export \
@@ -183,7 +183,7 @@ openssl pkcs12 -in dinhphu.pfx -out dinhphu.pem
 openssl pkcs12 -export -in dinhphu.pem -out dinhphu_macos.pfx -legacy
 ```
 
-## 🏢 Microsoft Entra Configuration Notes
+## Microsoft Entra Configuration Notes
 
 ### Authentication Binding
 
@@ -209,7 +209,7 @@ openssl pkcs12 -export -in dinhphu.pem -out dinhphu_macos.pfx -legacy
 
 [Microsoft Docs – Certificate-Based Authentication](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-certificate-based-authentication#step-4-configure-username-binding-policy)
 
-## ✅ Wrapping Up
+## Wrapping Up
 
 You've now built a secure, scalable two-tier Certificate Authority using Easy-RSA:
 
@@ -220,7 +220,7 @@ You've now built a secure, scalable two-tier Certificate Authority using Easy-RS
 
 This setup not only strengthens your internal security posture but also gives you complete control over your certificate lifecycle, policies, and trust relationships.
 
-## 📘 What's Next?
+## What's Next?
 
 In the upcoming article, I’ll share how I manage **SSH access for a large number of users and servers**, using a certificate-based and policy-driven approach to simplify operations and tighten security.
 
