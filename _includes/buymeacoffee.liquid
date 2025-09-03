@@ -1,0 +1,27 @@
+{% assign bmc = site.buymeacoffee %}
+{% if bmc and bmc.enabled and bmc.username %}
+  {% if bmc.mode == 'floating' %}
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="{{ bmc.username | escape }}"
+      data-description="{{ bmc.description | default: 'Support me on Buy me a coffee!' | escape }}"
+      data-message="{{ bmc.message | escape }}"
+      data-color="{{ bmc.color | default: '#FF5F5F' }}"
+      data-position="{{ bmc.position | default: 'Right' }}"
+      data-x_margin="{{ bmc.x_margin | default: 18 }}"
+      data-y_margin="{{ bmc.y_margin | default: 18 }}"
+    ></script>
+  {% else %}
+    <div class="bmc-inline" style="margin-top:1.25rem; display:flex; justify-content:center;">
+      <a href="https://www.buymeacoffee.com/{{ bmc.username | escape }}" target="_blank" rel="noopener">
+        <img
+          src="{{ bmc.button_image | default: 'https://cdn.buymeacoffee.com/buttons/v2/default-blue.png' }}"
+          alt="{{ bmc.text | default: 'Buy me a coffee' }}"
+          style="height: {{ bmc.button_height | default: 45 }}px; width: {{ bmc.button_width | default: 162 }}px;"
+        >
+      </a>
+    </div>
+  {% endif %}
+{% endif %}
