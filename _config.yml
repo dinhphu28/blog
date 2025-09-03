@@ -479,3 +479,22 @@ jsonresume:
   - languages
   - interests
   - references
+
+# -----------------------------------------------------------------------------
+# Buy Me a Coffee
+# -----------------------------------------------------------------------------
+
+buymeacoffee:
+  enabled: true
+  username: dinhphu28
+  mode: "button" # "button" or "floating"
+  text: "Buy me a coffee"
+  color: "#FF5F5F" # used by floating widget
+  button_image: "https://cdn.buymeacoffee.com/buttons/v2/default-blue.png"
+  button_height: 45
+  button_width: 162
+  message: "If you enjoy my posts, consider supporting ☕️"
+  description: "Support me on Buy Me a Coffee!"
+  position: "Right" # "Right" or "Left" (floating mode)
+  x_margin: 18
+  y_margin: 18
