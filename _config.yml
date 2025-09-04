@@ -481,7 +481,7 @@ jsonresume:
   - references
 
 # -----------------------------------------------------------------------------
-# Buy Me a Coffee
+# Sponsor
 # -----------------------------------------------------------------------------
 
 buymeacoffee:
@@ -491,10 +491,14 @@ buymeacoffee:
   text: "Buy me a coffee"
   color: "#FF5F5F" # used by floating widget
   button_image: "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-  button_height: 45
-  button_width: 162
+  button_height: 32
+  button_width: auto
   message: "If you enjoy my posts, consider supporting ☕️"
   description: "Support me on Buy Me a Coffee!"
   position: "Right" # "Right" or "Left" (floating mode)
   x_margin: 18
   y_margin: 18
+
+sponsor:
+  enabled: true
+  github: dinhphu28
