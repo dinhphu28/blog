@@ -1,17 +1,6 @@
 {% assign bmc = site.buymeacoffee %}
 {% assign sp = site.sponsor %}
 <div class="support-buttons" style="margin-top:1.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-  {%- if sp and sp.enabled and sp.github -%}
-    <iframe
-      src="https://github.com/sponsors/{{ sp.github }}/button"
-      title="Sponsor {{ sp.github }}"
-      height="32"
-      width="114"
-      style="border: 0; border-radius: 6px;"
-    >
-    </iframe>
-  {%- endif -%}
-
   {% if bmc and bmc.enabled and bmc.username %}
     {% if bmc.mode == 'floating' %}
       <script
@@ -27,15 +16,24 @@
         data-y_margin="{{ bmc.y_margin | default: 18 }}"
       ></script>
     {% else %}
-      <div class="bmc-inline" style="margin-top:1.25rem; display:flex; justify-content:center;">
-        <a href="https://www.buymeacoffee.com/{{ bmc.username | escape }}" target="_blank" rel="noopener">
-          <img
-            src="{{ bmc.button_image | default: 'https://cdn.buymeacoffee.com/buttons/v2/default-blue.png' }}"
-            alt="{{ bmc.text | default: 'Buy me a coffee' }}"
-            style="height: {{ bmc.button_height | default: 45 }}px; width: {{ bmc.button_width | default: 162 }}px;"
-          >
-        </a>
-      </div>
+      <a href="https://www.buymeacoffee.com/{{ bmc.username | escape }}" target="_blank" rel="noopener">
+        <img
+          src="{{ bmc.button_image | default: 'https://cdn.buymeacoffee.com/buttons/v2/default-blue.png' }}"
+          alt="{{ bmc.text | default: 'Buy me a coffee' }}"
+          style="height: {{ bmc.button_height | default: 45 }}px; width: {{ bmc.button_width | default: 162 }}px;"
+        >
+      </a>
     {% endif %}
   {% endif %}
+
+  {%- if sp and sp.enabled and sp.github -%}
+    <iframe
+      src="https://github.com/sponsors/{{ sp.github }}/button"
+      title="Sponsor {{ sp.github }}"
+      height="32"
+      width="114"
+      style="border: 0; border-radius: 6px;"
+    >
+    </iframe>
+  {%- endif -%}
 </div>
