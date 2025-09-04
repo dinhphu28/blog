@@ -2,7 +2,11 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://buymeacoffee.com/dinhphu28'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: >
+  Software Engineer .
+  <a href='https://github.com/dinhphu28'>GitHub</a> ·
+  <a href='mailto:dinhphu28@dinhphu28.com'>Email</a> ·
+  Documenting the journey, not just the results · Ho Chi Minh City, Vietnam
 
 profile:
   align: right
