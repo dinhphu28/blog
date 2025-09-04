@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://www.dinhphu28.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.dinhphu28.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-09-03T08:57:33+00:00</updated><id>https://www.dinhphu28.com/feed.xml</id><title type="html">Dinh Phu Nguyen dinhphu28</title><subtitle>Dinh Phu Nguyen also know as dinhphu28 is a Software Engineer with high level experience in Java - Spring Boot, RESTful Web Service and software development.
-</subtitle><entry><title type="html">Build a Root and Intermediate Certificate Authority with Easy-RSA</title><link href="https://www.dinhphu28.com/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa/" rel="alternate" type="text/html" title="Build a Root and Intermediate Certificate Authority with Easy-RSA" /><published>2025-07-14T11:00:00+00:00</published><updated>2025-07-14T11:00:00+00:00</updated><id>https://www.dinhphu28.com/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa/"><![CDATA[<blockquote>
-  <p>📖 This post continues from <a href="/blog/2025/why-build-your-own-certificate-authority">Part 1: Why Build Your Own Certificate Authority</a></p>
-</blockquote>
-
-<h2 id="root-ca-setup">Root CA Setup</h2>
-
-<h3 id="1-download-and-extract-easy-rsa">1. Download and Extract Easy-RSA</h3>
-
-<p>Optionally rename the directory to <code class="language-plaintext highlighter-rouge">root-ca</code>.</p>
-
-<h3 id="2-create-or-edit-the-vars-file">2. Create or Edit the <code class="language-plaintext highlighter-rouge">vars</code> File</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set_var EASYRSA_REQ_COUNTRY    <span class="s2">"VN"</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://www.dinhphu28.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://www.dinhphu28.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-09-04T03:56:52+00:00</updated><id>https://www.dinhphu28.com/feed.xml</id><title type="html">Dinh Phu Nguyen dinhphu28</title><subtitle>Dinh Phu Nguyen also know as dinhphu28 is a Software Engineer with high level experience in Java - Spring Boot, RESTful Web Service and software development. </subtitle><entry><title type="html">Build a Root and Intermediate Certificate Authority with Easy-RSA</title><link href="https://www.dinhphu28.com/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa/" rel="alternate" type="text/html" title="Build a Root and Intermediate Certificate Authority with Easy-RSA"/><published>2025-07-14T11:00:00+00:00</published><updated>2025-07-14T11:00:00+00:00</updated><id>https://www.dinhphu28.com/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa/"><![CDATA[<blockquote> <p>📖 This post continues from <a href="/blog/2025/why-build-your-own-certificate-authority">Part 1: Why Build Your Own Certificate Authority</a></p> </blockquote> <h2 id="root-ca-setup">Root CA Setup</h2> <h3 id="1-download-and-extract-easy-rsa">1. Download and Extract Easy-RSA</h3> <p>Optionally rename the directory to <code class="language-plaintext highlighter-rouge">root-ca</code>.</p> <h3 id="2-create-or-edit-the-vars-file">2. Create or Edit the <code class="language-plaintext highlighter-rouge">vars</code> File</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set_var EASYRSA_REQ_COUNTRY    <span class="s2">"VN"</span>
 set_var EASYRSA_REQ_PROVINCE   <span class="s2">"Ho Chi Minh City"</span>
 set_var EASYRSA_REQ_CITY       <span class="s2">"Ho Chi Minh City"</span>
 set_var EASYRSA_REQ_ORG        <span class="s2">"DINHPHU28 Root CA"</span>
@@ -20,77 +7,22 @@ set_var EASYRSA_REQ_OU         <span class="s2">"Community"</span>
 set_var EASYRSA_ALGO           <span class="s2">"ec"</span>
 set_var EASYRSA_DIGEST         <span class="s2">"sha512"</span>
 set_var EASYRSA_CURVE          <span class="s2">"secp384r1"</span>
-</code></pre></div></div>
-
-<h3 id="3-initialize-the-pki">3. Initialize the PKI</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa init-pki
-</code></pre></div></div>
-
-<h3 id="4-build-the-root-ca">4. Build the Root CA</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa build-ca
-</code></pre></div></div>
-
-<blockquote>
-  <p>🔐 Remember the password — this secures your CA.</p>
-</blockquote>
-
-<p>You now have:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">pki/private/ca.key</code></li>
-  <li><code class="language-plaintext highlighter-rouge">pki/ca.crt</code> (Root certificate)</li>
-</ul>
-
-<h3 id="5-create-custom-x509-type-for-intermediate-ca">5. Create Custom x509 Type for Intermediate CA</h3>
-
-<p>Create <code class="language-plaintext highlighter-rouge">x509-types/caRestricted</code>:</p>
-
-<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">basicConstraints</span> <span class="p">=</span> <span class="s">critical, CA:TRUE, pathlen:0</span>
+</code></pre></div></div> <h3 id="3-initialize-the-pki">3. Initialize the PKI</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa init-pki
+</code></pre></div></div> <h3 id="4-build-the-root-ca">4. Build the Root CA</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa build-ca
+</code></pre></div></div> <blockquote> <p>🔐 Remember the password — this secures your CA.</p> </blockquote> <p>You now have:</p> <ul> <li><code class="language-plaintext highlighter-rouge">pki/private/ca.key</code></li> <li><code class="language-plaintext highlighter-rouge">pki/ca.crt</code> (Root certificate)</li> </ul> <h3 id="5-create-custom-x509-type-for-intermediate-ca">5. Create Custom x509 Type for Intermediate CA</h3> <p>Create <code class="language-plaintext highlighter-rouge">x509-types/caRestricted</code>:</p> <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">basicConstraints</span> <span class="p">=</span> <span class="s">critical, CA:TRUE, pathlen:0</span>
 <span class="py">subjectKeyIdentifier</span> <span class="p">=</span> <span class="s">hash</span>
 <span class="py">authorityKeyIdentifier</span> <span class="p">=</span> <span class="s">keyid:always,issuer:always</span>
 <span class="py">keyUsage</span> <span class="p">=</span> <span class="s">critical, cRLSign, keyCertSign</span>
-</code></pre></div></div>
-
-<h2 id="intermediate-ca-setup">Intermediate CA Setup</h2>
-
-<p>Repeat steps 1–3 in a new directory like <code class="language-plaintext highlighter-rouge">intermediate-ca</code>, then update <code class="language-plaintext highlighter-rouge">vars</code>:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set_var EASYRSA_REQ_ORG        <span class="s2">"DINHPHU28 EC CA"</span>
+</code></pre></div></div> <h2 id="intermediate-ca-setup">Intermediate CA Setup</h2> <p>Repeat steps 1–3 in a new directory like <code class="language-plaintext highlighter-rouge">intermediate-ca</code>, then update <code class="language-plaintext highlighter-rouge">vars</code>:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set_var EASYRSA_REQ_ORG        <span class="s2">"DINHPHU28 EC CA"</span>
 set_var EASYRSA_REQ_OU         <span class="s2">"Intermediate"</span>
-</code></pre></div></div>
-
-<h3 id="initialize-and-create-request">Initialize and Create Request</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa init-pki
+</code></pre></div></div> <h3 id="initialize-and-create-request">Initialize and Create Request</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa init-pki
 ./easyrsa gen-req intermediate-ca
-</code></pre></div></div>
-
-<p>Transfer <code class="language-plaintext highlighter-rouge">intermediate-ca.req</code> to the <strong>offline Root CA</strong>.</p>
-
-<h3 id="at-the-root-ca">At the Root CA</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa import-req /path/to/intermediate-ca.req intermediate-ca
+</code></pre></div></div> <p>Transfer <code class="language-plaintext highlighter-rouge">intermediate-ca.req</code> to the <strong>offline Root CA</strong>.</p> <h3 id="at-the-root-ca">At the Root CA</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa import-req /path/to/intermediate-ca.req intermediate-ca
 <span class="nv">EASYRSA_NO_SAN</span><span class="o">=</span>1 ./easyrsa sign-req caRestricted intermediate-ca
-</code></pre></div></div>
-
-<h3 id="back-at-intermediate-ca">Back at Intermediate CA</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /path/to/intermediate-ca.crt pki/ca.crt
+</code></pre></div></div> <h3 id="back-at-intermediate-ca">Back at Intermediate CA</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /path/to/intermediate-ca.crt pki/ca.crt
 <span class="nb">cp</span> /path/to/root-ca/pki/ca.crt pki/root-ca.crt
 <span class="nb">cat </span>pki/ca.crt pki/root-ca.crt <span class="o">&gt;</span> pki/ca-chain.crt
-</code></pre></div></div>
-
-<p>You now have a functional Intermediate CA.</p>
-
-<h2 id="issue-certificate-for-microsoft-365-authentication">Issue Certificate for Microsoft 365 Authentication</h2>
-
-<h3 id="1-create-openssl-config">1. Create OpenSSL Config</h3>
-
-<p>Save as <code class="language-plaintext highlighter-rouge">user_openssl.cnf</code>:</p>
-
-<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[ req ]</span>
+</code></pre></div></div> <p>You now have a functional Intermediate CA.</p> <h2 id="issue-certificate-for-microsoft-365-authentication">Issue Certificate for Microsoft 365 Authentication</h2> <h3 id="1-create-openssl-config">1. Create OpenSSL Config</h3> <p>Save as <code class="language-plaintext highlighter-rouge">user_openssl.cnf</code>:</p> <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[ req ]</span>
 <span class="py">default_bits</span>       <span class="p">=</span> <span class="s">384</span>
 <span class="py">prompt</span>             <span class="p">=</span> <span class="s">no</span>
 <span class="py">distinguished_name</span> <span class="p">=</span> <span class="s">dn</span>
@@ -106,217 +38,23 @@ set_var EASYRSA_REQ_OU         <span class="s2">"Intermediate"</span>
 
 <span class="nn">[ alt_names ]</span>
 <span class="py">otherName</span> <span class="p">=</span> <span class="s">1.3.6.1.4.1.311.20.2.3;UTF8:dinhphu@office.dinhphu28.com</span>
-</code></pre></div></div>
-
-<h3 id="2-generate-key-and-csr">2. Generate Key and CSR</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl ecparam <span class="nt">-name</span> secp384r1 <span class="nt">-genkey</span> <span class="nt">-noout</span> <span class="nt">-out</span> dinhphu.key
+</code></pre></div></div> <h3 id="2-generate-key-and-csr">2. Generate Key and CSR</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl ecparam <span class="nt">-name</span> secp384r1 <span class="nt">-genkey</span> <span class="nt">-noout</span> <span class="nt">-out</span> dinhphu.key
 openssl req <span class="nt">-new</span> <span class="nt">-key</span> dinhphu.key <span class="nt">-out</span> dinhphu.csr <span class="nt">-config</span> user_openssl.cnf
-</code></pre></div></div>
-
-<h3 id="3-sign-the-csr-at-intermediate-ca">3. Sign the CSR at Intermediate CA</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa import-req /full/path/to/dinhphu.csr dinhphu
+</code></pre></div></div> <h3 id="3-sign-the-csr-at-intermediate-ca">3. Sign the CSR at Intermediate CA</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa import-req /full/path/to/dinhphu.csr dinhphu
 <span class="nv">EASYRSA_CERT_EXPIRE</span><span class="o">=</span>60 ./easyrsa <span class="nt">--subject-alt-name</span><span class="o">=</span><span class="s2">"otherName:1.3.6.1.4.1.311.20.2.3;UTF8:dinhphu@office.dinhphu28.com"</span> sign-req client dinhphu
-</code></pre></div></div>
-
-<h3 id="4-verify-upn">4. Verify UPN</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 <span class="nt">-in</span> pki/issued/dinhphu.crt <span class="nt">-noout</span> <span class="nt">-text</span> | <span class="nb">grep</span> <span class="nt">-A5</span> <span class="s2">"Subject Alternative Name"</span>
-</code></pre></div></div>
-
-<p>Should contain your UPN like this:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X509v3 Subject Alternative Name:
+</code></pre></div></div> <h3 id="4-verify-upn">4. Verify UPN</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl x509 <span class="nt">-in</span> pki/issued/dinhphu.crt <span class="nt">-noout</span> <span class="nt">-text</span> | <span class="nb">grep</span> <span class="nt">-A5</span> <span class="s2">"Subject Alternative Name"</span>
+</code></pre></div></div> <p>Should contain your UPN like this:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X509v3 Subject Alternative Name:
     otherName:1.3.6.1.4.1.311.20.2.3;UTF8:dinhphu@office.dinhphu28.com
-</code></pre></div></div>
-
-<p><strong>Note:</strong> Above client cert <code class="language-plaintext highlighter-rouge">dinhphu.crt</code> is only contain client cert.</p>
-
-<p>To verify the client cert valid, we not only need the Root CA cert but also Intermediate CA (full chain of trust):
-<code class="language-plaintext highlighter-rouge">Root CA -&gt; Intermediate CA -&gt; Client cert</code></p>
-
-<p>Most of SSL Tools or System use use client cert with fullchain (intermediate-ca -&gt; leaf) to verify the client with only Root CA cert.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /path/to/intermediate-ca/pki/ca.crt dinhphu.crt <span class="o">&gt;</span> dinhphu-fullchain.crt
-</code></pre></div></div>
-
-<h2 id="create-pfx-certificate">Create PFX Certificate</h2>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl pkcs12 <span class="nt">-export</span> <span class="se">\</span>
+</code></pre></div></div> <p><strong>Note:</strong> Above client cert <code class="language-plaintext highlighter-rouge">dinhphu.crt</code> is only contain client cert.</p> <p>To verify the client cert valid, we not only need the Root CA cert but also Intermediate CA (full chain of trust): <code class="language-plaintext highlighter-rouge">Root CA -&gt; Intermediate CA -&gt; Client cert</code></p> <p>Most of SSL Tools or System use use client cert with fullchain (intermediate-ca -&gt; leaf) to verify the client with only Root CA cert.</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /path/to/intermediate-ca/pki/ca.crt dinhphu.crt <span class="o">&gt;</span> dinhphu-fullchain.crt
+</code></pre></div></div> <h2 id="create-pfx-certificate">Create PFX Certificate</h2> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl pkcs12 <span class="nt">-export</span> <span class="se">\</span>
   <span class="nt">-inkey</span> dinhphu.key <span class="se">\</span>
   <span class="nt">-in</span> dinhphu.crt <span class="se">\</span>
   <span class="nt">-certfile</span> /path-to/ca-chain.crt <span class="se">\</span>
   <span class="nt">-out</span> dinhphu.pfx <span class="se">\</span>
   <span class="nt">-name</span> <span class="s2">"Dinh Phu Nguyen"</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>You’ll be prompted for a password to protect the <code class="language-plaintext highlighter-rouge">.pfx</code>.</p>
-</blockquote>
-
-<h3 id="optional-macos-conversion">Optional: macOS Conversion</h3>
-
-<p>Because of this <code class="language-plaintext highlighter-rouge">pfx</code> using pkcs12 is not compatible with macOS, so we need to convert it to legacy.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl pkcs12 <span class="nt">-in</span> dinhphu.pfx <span class="nt">-out</span> dinhphu.pem
+</code></pre></div></div> <blockquote> <p>You’ll be prompted for a password to protect the <code class="language-plaintext highlighter-rouge">.pfx</code>.</p> </blockquote> <h3 id="optional-macos-conversion">Optional: macOS Conversion</h3> <p>Because of this <code class="language-plaintext highlighter-rouge">pfx</code> using pkcs12 is not compatible with macOS, so we need to convert it to legacy.</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl pkcs12 <span class="nt">-in</span> dinhphu.pfx <span class="nt">-out</span> dinhphu.pem
 openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> dinhphu.pem <span class="nt">-out</span> dinhphu_macos.pfx <span class="nt">-legacy</span>
-</code></pre></div></div>
-
-<h2 id="microsoft-entra-configuration-notes">Microsoft Entra Configuration Notes</h2>
-
-<h3 id="authentication-binding">Authentication Binding</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Certificate Attribute</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Policy OID</td>
-      <td><code class="language-plaintext highlighter-rouge">1.3.6.1.4.1.311.20.2.2</code></td>
-    </tr>
-    <tr>
-      <td>Authentication strength</td>
-      <td>Multi-factor</td>
-    </tr>
-    <tr>
-      <td>Affinity binding</td>
-      <td>Low</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><strong>Add rule:</strong> Policy OID</p>
-
-<ul>
-  <li>Certificate attribute: Policy OID</li>
-  <li>Policy OID: <code class="language-plaintext highlighter-rouge">1.3.6.1.4.1.311.20.2.2</code></li>
-  <li>Authentication strength: Mutli-factor authentication</li>
-  <li>Affinity binding: Low</li>
-</ul>
-
-<h3 id="username-binding">Username Binding</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Certificate field</th>
-      <th>Affinity binding</th>
-      <th>User attribute</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>PrincipalName</td>
-      <td>Low</td>
-      <td>userPrincipalName</td>
-    </tr>
-    <tr>
-      <td>RFC822Name</td>
-      <td>Low</td>
-      <td>userPrincipalName</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><a href="https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-certificate-based-authentication#step-4-configure-username-binding-policy">Microsoft Docs – Certificate-Based Authentication</a></p>
-
-<h2 id="wrapping-up">Wrapping Up</h2>
-
-<p>You’ve now built a secure, scalable two-tier Certificate Authority using Easy-RSA:</p>
-
-<ul>
-  <li>A Root CA that remains offline for maximum trust</li>
-  <li>An Intermediate CA that handles day-to-day certificate issuance</li>
-  <li>End-entity certificates for services like Microsoft 365 with UPN-based binding</li>
-  <li>Exportable PFX files and compatibility with various systems including macOS</li>
-</ul>
-
-<p>This setup not only strengthens your internal security posture but also gives you complete control over your certificate lifecycle, policies, and trust relationships.</p>
-
-<h2 id="whats-next">What’s Next?</h2>
-
-<p>In the upcoming article, I’ll share how I manage <strong>SSH access for a large number of users and servers</strong>, using a certificate-based and policy-driven approach to simplify operations and tighten security.</p>
-
-<p>If you’re building out a lab, managing production systems, or exploring PKI for your org — you’re on the right path. Feel free to leave questions or comments below.</p>
-
-<p>Happy cert-ing!</p>]]></content><author><name></name></author><category term="utilities" /><category term="ssl" /><category term="ca" /><category term="easy-rsa" /><category term="openssl" /><category term="security" /><category term="tutorial" /><summary type="html"><![CDATA[Step-by-step guide to building a Root CA and Intermediate CA using Easy-RSA, including issuing certificates for Microsoft 365 authentication.]]></summary></entry><entry><title type="html">Why Build Your Own Certificate Authority</title><link href="https://www.dinhphu28.com/blog/2025/why-build-your-own-certificate-authority/" rel="alternate" type="text/html" title="Why Build Your Own Certificate Authority" /><published>2025-07-14T07:30:00+00:00</published><updated>2025-07-14T07:30:00+00:00</updated><id>https://www.dinhphu28.com/blog/2025/why-build-your-own-certificate-authority</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2025/why-build-your-own-certificate-authority/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>Managing a large number of users or devices in an organization - or even a home lab - introduces several challenges:</p>
-
-<ul>
-  <li>Data security and privacy</li>
-  <li>Establishing trust between systems</li>
-  <li>Ensuring integrity of data and systems</li>
-  <li>Automating access and lifecycle management</li>
-  <li>Providing phishing-resistant authentication</li>
-</ul>
-
-<h2 id="use-cases-for-certificate-based-authentication">Use Cases for Certificate-Based Authentication</h2>
-
-<p>CA (Certificate Authority) can be used for securing many kinds of infrastructure, such as:</p>
-
-<ul>
-  <li>Securing web servers (HTTPS)</li>
-  <li>VPN authentication</li>
-  <li>Email encryption (S/MIME)</li>
-  <li>IoT device identity</li>
-  <li>Cloud services and API trust</li>
-  <li>Mutual TLS (mTLS) authentication</li>
-</ul>
-
-<h2 id="self-signed-vs-public-cas">Self-Signed vs. Public CAs</h2>
-
-<p>When evaluating certificate options, you may consider self-signed certificates or public Certificate Authorities (CAs). However:</p>
-
-<h3 id="self-signed-certificates">Self-Signed Certificates</h3>
-
-<ul>
-  <li>Not trusted by browsers or operating systems by default</li>
-  <li>Difficult to distribute and manage in large environments</li>
-</ul>
-
-<h3 id="public-certificate-authorities">Public Certificate Authorities</h3>
-
-<ul>
-  <li>Can be expensive for many certificates</li>
-  <li>Offer limited control over certificate lifecycle or policy</li>
-</ul>
-
-<h2 id="the-better-alternative-build-your-own-ca">The Better Alternative: Build Your Own CA</h2>
-
-<p>By building your own Certificate Authority using tools like <strong>Easy-RSA</strong>, you gain:</p>
-
-<ul>
-  <li>Complete control over your PKI</li>
-  <li>Zero cost per certificate</li>
-  <li>Ability to define your own trust policies and usage</li>
-</ul>
-
-<p>Easy-RSA is a simple yet powerful command-line utility to manage your own Public Key Infrastructure (PKI).</p>
-
-<p>This gives you <strong>total control</strong>, <strong>zero recurring cost</strong>, and the ability to build a trust model that suits your environment.</p>
-
-<h2 id="two-tier-ca-hierarchy">Two-Tier CA Hierarchy</h2>
-
-<p>A best practice is to create:</p>
-
-<ul>
-  <li><strong>Root CA</strong>: Offline, used only to sign Intermediate CA</li>
-  <li><strong>Intermediate CA</strong>: Actively issues end-entity certificates</li>
-</ul>
-
-<blockquote>
-  <p>🔐 Keep the Root CA offline to minimize security risks.</p>
-
-  <p>Only use it when necessary to sign or revoke Intermediate CAs.</p>
-</blockquote>
-
-<pre><code class="language-mermaid">graph TD
+</code></pre></div></div> <h2 id="microsoft-entra-configuration-notes">Microsoft Entra Configuration Notes</h2> <h3 id="authentication-binding">Authentication Binding</h3> <table> <thead> <tr> <th>Certificate Attribute</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td>Policy OID</td> <td><code class="language-plaintext highlighter-rouge">1.3.6.1.4.1.311.20.2.2</code></td> </tr> <tr> <td>Authentication strength</td> <td>Multi-factor</td> </tr> <tr> <td>Affinity binding</td> <td>Low</td> </tr> </tbody> </table> <p><strong>Add rule:</strong> Policy OID</p> <ul> <li>Certificate attribute: Policy OID</li> <li>Policy OID: <code class="language-plaintext highlighter-rouge">1.3.6.1.4.1.311.20.2.2</code></li> <li>Authentication strength: Mutli-factor authentication</li> <li>Affinity binding: Low</li> </ul> <h3 id="username-binding">Username Binding</h3> <table> <thead> <tr> <th>Certificate field</th> <th>Affinity binding</th> <th>User attribute</th> </tr> </thead> <tbody> <tr> <td>PrincipalName</td> <td>Low</td> <td>userPrincipalName</td> </tr> <tr> <td>RFC822Name</td> <td>Low</td> <td>userPrincipalName</td> </tr> </tbody> </table> <p><a href="https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-certificate-based-authentication#step-4-configure-username-binding-policy">Microsoft Docs – Certificate-Based Authentication</a></p> <h2 id="wrapping-up">Wrapping Up</h2> <p>You’ve now built a secure, scalable two-tier Certificate Authority using Easy-RSA:</p> <ul> <li>A Root CA that remains offline for maximum trust</li> <li>An Intermediate CA that handles day-to-day certificate issuance</li> <li>End-entity certificates for services like Microsoft 365 with UPN-based binding</li> <li>Exportable PFX files and compatibility with various systems including macOS</li> </ul> <p>This setup not only strengthens your internal security posture but also gives you complete control over your certificate lifecycle, policies, and trust relationships.</p> <h2 id="whats-next">What’s Next?</h2> <p>In the upcoming article, I’ll share how I manage <strong>SSH access for a large number of users and servers</strong>, using a certificate-based and policy-driven approach to simplify operations and tighten security.</p> <p>If you’re building out a lab, managing production systems, or exploring PKI for your org — you’re on the right path. Feel free to leave questions or comments below.</p> <p>Happy cert-ing!</p>]]></content><author><name></name></author><category term="utilities"/><category term="ssl"/><category term="ca"/><category term="easy-rsa"/><category term="openssl"/><category term="security"/><category term="tutorial"/><summary type="html"><![CDATA[Step-by-step guide to building a Root CA and Intermediate CA using Easy-RSA, including issuing certificates for Microsoft 365 authentication.]]></summary></entry><entry><title type="html">Why Build Your Own Certificate Authority</title><link href="https://www.dinhphu28.com/blog/2025/why-build-your-own-certificate-authority/" rel="alternate" type="text/html" title="Why Build Your Own Certificate Authority"/><published>2025-07-14T07:30:00+00:00</published><updated>2025-07-14T07:30:00+00:00</updated><id>https://www.dinhphu28.com/blog/2025/why-build-your-own-certificate-authority</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2025/why-build-your-own-certificate-authority/"><![CDATA[<h2 id="introduction">Introduction</h2> <p>Managing a large number of users or devices in an organization - or even a home lab - introduces several challenges:</p> <ul> <li>Data security and privacy</li> <li>Establishing trust between systems</li> <li>Ensuring integrity of data and systems</li> <li>Automating access and lifecycle management</li> <li>Providing phishing-resistant authentication</li> </ul> <h2 id="use-cases-for-certificate-based-authentication">Use Cases for Certificate-Based Authentication</h2> <p>CA (Certificate Authority) can be used for securing many kinds of infrastructure, such as:</p> <ul> <li>Securing web servers (HTTPS)</li> <li>VPN authentication</li> <li>Email encryption (S/MIME)</li> <li>IoT device identity</li> <li>Cloud services and API trust</li> <li>Mutual TLS (mTLS) authentication</li> </ul> <h2 id="self-signed-vs-public-cas">Self-Signed vs. Public CAs</h2> <p>When evaluating certificate options, you may consider self-signed certificates or public Certificate Authorities (CAs). However:</p> <h3 id="self-signed-certificates">Self-Signed Certificates</h3> <ul> <li>Not trusted by browsers or operating systems by default</li> <li>Difficult to distribute and manage in large environments</li> </ul> <h3 id="public-certificate-authorities">Public Certificate Authorities</h3> <ul> <li>Can be expensive for many certificates</li> <li>Offer limited control over certificate lifecycle or policy</li> </ul> <h2 id="the-better-alternative-build-your-own-ca">The Better Alternative: Build Your Own CA</h2> <p>By building your own Certificate Authority using tools like <strong>Easy-RSA</strong>, you gain:</p> <ul> <li>Complete control over your PKI</li> <li>Zero cost per certificate</li> <li>Ability to define your own trust policies and usage</li> </ul> <p>Easy-RSA is a simple yet powerful command-line utility to manage your own Public Key Infrastructure (PKI).</p> <p>This gives you <strong>total control</strong>, <strong>zero recurring cost</strong>, and the ability to build a trust model that suits your environment.</p> <h2 id="two-tier-ca-hierarchy">Two-Tier CA Hierarchy</h2> <p>A best practice is to create:</p> <ul> <li><strong>Root CA</strong>: Offline, used only to sign Intermediate CA</li> <li><strong>Intermediate CA</strong>: Actively issues end-entity certificates</li> </ul> <blockquote> <p>🔐 Keep the Root CA offline to minimize security risks.</p> <p>Only use it when necessary to sign or revoke Intermediate CAs.</p> </blockquote> <pre><code class="language-mermaid">graph TD
     RootCA["🛡️ Root CA (Offline) - Signs Intermediate CA"]
     CRLRoot["📄 Root CRL (Exported)"]
     IntermediateCA["🔄 Intermediate CA (Online) - Signs End-Entity Certs"]
@@ -331,233 +69,18 @@ openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> dinhp
     IntermediateCA --&gt;|Issue| WebServer
     IntermediateCA --&gt;|Issue| EmailCert
     IntermediateCA --&gt;|Issue| VPNCert
-</code></pre>
-
-<h2 id="my-real-world-case">My Real-World Case</h2>
-
-<p>Let me share a bit of context. In my home lab, I manage:</p>
-
-<ul>
-  <li>OpenVPN servers</li>
-  <li>Microsoft 365 identity integrations</li>
-  <li>Internal web applications</li>
-  <li>Secure email with S/MIME</li>
-</ul>
-
-<p>Each time I added a new device or user, managing credentials was painful. Building a CA infrastructure simplified trust, reduced manual effort, and enabled automation.</p>
-
-<h2 id="whats-next">What’s Next?</h2>
-
-<p>In <a href="/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa">Part 2</a>, I’ll walk you through the exact steps I used to build a Root CA, an Intermediate CA, and generate certificates with Easy-RSA.</p>
-
-<p>Stay tuned!</p>]]></content><author><name></name></author><category term="utilities" /><category term="ssl" /><category term="ca" /><category term="openssl" /><category term="easy-rsa" /><category term="security" /><category term="pki" /><summary type="html"><![CDATA[Explore the challenges of managing secure identities in your infrastructure, and why setting up your own Certificate Authority (CA) is the right solution.]]></summary></entry><entry><title type="html">ZRAM and how I deal with the memory usage in my Linux system</title><link href="https://www.dinhphu28.com/blog/2025/zram-swap/" rel="alternate" type="text/html" title="ZRAM and how I deal with the memory usage in my Linux system" /><published>2025-05-30T08:09:00+00:00</published><updated>2025-05-30T08:09:00+00:00</updated><id>https://www.dinhphu28.com/blog/2025/zram-swap</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2025/zram-swap/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>I started using Linux in 2018 on a laptop with 4GB of RAM and a dual-core CPU.</p>
-
-<p>At first, I was happy with how my system performed. But over time, I noticed it becoming slower, especially as memory usage increased. Occasionally, the system would freeze for a few seconds, and I had to wait for it to respond again.</p>
-
-<p>I thought enabling swap might help improve performance. At the time, I didn’t know about ZRAM, so I simply enabled traditional disk-based swap.</p>
-
-<p>Thanks to the SSD, swap access was relatively fast—but still, the system didn’t feel as responsive as before, especially when I had multiple applications open.</p>
-
-<p>For a long time, I believed swap was the only solution to extend memory. Then I discovered <strong>ZRAM</strong>, and I began learning how it works and how to make use of it.</p>
-
-<h2 id="what-is-zram">What is ZRAM?</h2>
-
-<p><strong>ZRAM</strong> is a Linux kernel module that creates compressed, RAM-based block devices. These virtual devices can be used either as swap space or as general-purpose RAM disks.</p>
-
-<p>Yes, you read that right—<strong>swap space stored in RAM</strong> instead of on disk.</p>
-
-<p>At this point, you might be thinking: <em>“Isn’t swap supposed to expand available memory? Why would we use our already limited RAM for it?”</em></p>
-
-<p>That’s where ZRAM’s magic lies. By compressing data before storing it in RAM, ZRAM allows you to store more data in the same amount of memory. This makes your system feel like it has more RAM—without touching your disk.</p>
-
-<h2 id="how-does-zram-swap-work">How does ZRAM swap work?</h2>
-
-<p>Unlike traditional swap, which stores data on disk, <strong>ZRAM compresses and stores swap data directly in RAM</strong>.</p>
-
-<p>This means you can fit more data into your available memory. For example, with 4GB of physical RAM, ZRAM might effectively give you the equivalent of 6GB—depending on the compressibility of your data.</p>
-
-<p>Since RAM is significantly faster than any disk, this results in <strong>better system responsiveness</strong>, especially under memory pressure.</p>
-
-<p>Of course, compression and decompression use CPU resources. On low-end CPUs, this overhead might cause a performance hit. But on modern processors, it’s usually negligible—and the benefit of having “more RAM” tends to outweigh the cost.</p>
-
-<p>ZRAM supports several compression algorithms, such as <strong>LZO</strong>, <strong>LZ4</strong>, <strong>ZSTD</strong>, and others. Personally, I prefer <strong>ZSTD</strong> because it strikes a good balance between speed and compression ratio. It’s also the default in <strong>openSUSE Tumbleweed</strong>.</p>
-
-<h2 id="enabling-zram">Enabling ZRAM</h2>
-
-<p>For openSUSE Tumbleweed, enable ZRAM is easy. Just run the following command:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>zypper <span class="nb">install </span>systemd-zram-service <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>zramswapon
-</code></pre></div></div>
-
-<p>For Debian/Ubuntu, you can install the <code class="language-plaintext highlighter-rouge">zram-config</code> package:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>zram-config
+</code></pre> <h2 id="my-real-world-case">My Real-World Case</h2> <p>Let me share a bit of context. In my home lab, I manage:</p> <ul> <li>OpenVPN servers</li> <li>Microsoft 365 identity integrations</li> <li>Internal web applications</li> <li>Secure email with S/MIME</li> </ul> <p>Each time I added a new device or user, managing credentials was painful. Building a CA infrastructure simplified trust, reduced manual effort, and enabled automation.</p> <h2 id="whats-next">What’s Next?</h2> <p>In <a href="/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa">Part 2</a>, I’ll walk you through the exact steps I used to build a Root CA, an Intermediate CA, and generate certificates with Easy-RSA.</p> <p>Stay tuned!</p>]]></content><author><name></name></author><category term="utilities"/><category term="ssl"/><category term="ca"/><category term="openssl"/><category term="easy-rsa"/><category term="security"/><category term="pki"/><summary type="html"><![CDATA[Explore the challenges of managing secure identities in your infrastructure, and why setting up your own Certificate Authority (CA) is the right solution.]]></summary></entry><entry><title type="html">ZRAM and how I deal with the memory usage in my Linux system</title><link href="https://www.dinhphu28.com/blog/2025/zram-swap/" rel="alternate" type="text/html" title="ZRAM and how I deal with the memory usage in my Linux system"/><published>2025-05-30T08:09:00+00:00</published><updated>2025-05-30T08:09:00+00:00</updated><id>https://www.dinhphu28.com/blog/2025/zram-swap</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2025/zram-swap/"><![CDATA[<h2 id="introduction">Introduction</h2> <p>I started using Linux in 2018 on a laptop with 4GB of RAM and a dual-core CPU.</p> <p>At first, I was happy with how my system performed. But over time, I noticed it becoming slower, especially as memory usage increased. Occasionally, the system would freeze for a few seconds, and I had to wait for it to respond again.</p> <p>I thought enabling swap might help improve performance. At the time, I didn’t know about ZRAM, so I simply enabled traditional disk-based swap.</p> <p>Thanks to the SSD, swap access was relatively fast—but still, the system didn’t feel as responsive as before, especially when I had multiple applications open.</p> <p>For a long time, I believed swap was the only solution to extend memory. Then I discovered <strong>ZRAM</strong>, and I began learning how it works and how to make use of it.</p> <h2 id="what-is-zram">What is ZRAM?</h2> <p><strong>ZRAM</strong> is a Linux kernel module that creates compressed, RAM-based block devices. These virtual devices can be used either as swap space or as general-purpose RAM disks.</p> <p>Yes, you read that right—<strong>swap space stored in RAM</strong> instead of on disk.</p> <p>At this point, you might be thinking: <em>“Isn’t swap supposed to expand available memory? Why would we use our already limited RAM for it?”</em></p> <p>That’s where ZRAM’s magic lies. By compressing data before storing it in RAM, ZRAM allows you to store more data in the same amount of memory. This makes your system feel like it has more RAM—without touching your disk.</p> <h2 id="how-does-zram-swap-work">How does ZRAM swap work?</h2> <p>Unlike traditional swap, which stores data on disk, <strong>ZRAM compresses and stores swap data directly in RAM</strong>.</p> <p>This means you can fit more data into your available memory. For example, with 4GB of physical RAM, ZRAM might effectively give you the equivalent of 6GB—depending on the compressibility of your data.</p> <p>Since RAM is significantly faster than any disk, this results in <strong>better system responsiveness</strong>, especially under memory pressure.</p> <p>Of course, compression and decompression use CPU resources. On low-end CPUs, this overhead might cause a performance hit. But on modern processors, it’s usually negligible—and the benefit of having “more RAM” tends to outweigh the cost.</p> <p>ZRAM supports several compression algorithms, such as <strong>LZO</strong>, <strong>LZ4</strong>, <strong>ZSTD</strong>, and others. Personally, I prefer <strong>ZSTD</strong> because it strikes a good balance between speed and compression ratio. It’s also the default in <strong>openSUSE Tumbleweed</strong>.</p> <h2 id="enabling-zram">Enabling ZRAM</h2> <p>For openSUSE Tumbleweed, enable ZRAM is easy. Just run the following command:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>zypper <span class="nb">install </span>systemd-zram-service <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>zramswapon
+</code></pre></div></div> <p>For Debian/Ubuntu, you can install the <code class="language-plaintext highlighter-rouge">zram-config</code> package:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>zram-config
 <span class="nb">sudo </span>systemctl <span class="nb">enable </span>zram-config
 <span class="nb">sudo </span>systemctl start zram-config
-</code></pre></div></div>
-
-<p>Because of ZRAM swap (data compression), data should be pushed into ZRAM as soon as possible. Swappiness should be <code class="language-plaintext highlighter-rouge">180</code>.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl vm.swappiness<span class="o">=</span>180
-</code></pre></div></div>
-
-<p>With <code class="language-plaintext highlighter-rouge">zstd</code>, <code class="language-plaintext highlighter-rouge">vm.page-cluster</code> should be <code class="language-plaintext highlighter-rouge">0</code> because of decompression.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl vm.page-cluster<span class="o">=</span>0
-</code></pre></div></div>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>I’ve been using <strong>ZRAM</strong> for a while now, and I can confidently say it has significantly improved my system’s performance. At the very least, it allows me to open dozens of browser tabs and run multiple applications without noticeable slowdowns.</p>
-
-<p>That said, ZRAM is <strong>not a replacement for physical RAM</strong>. Instead, it’s a smart way to make better use of the RAM you already have—especially under memory pressure.</p>
-
-<p>If your system has plenty of RAM, ZRAM might not be necessary. In fact, the CPU overhead for compression and decompression could slightly degrade performance in such cases.</p>
-
-<p>But if you’re working with a <strong>low-end system or limited RAM</strong>, ZRAM can be a game-changer. It provides a noticeable performance boost with minimal setup.</p>
-
-<p>Thanks for reading! I hope you found this post helpful.</p>
-
-<p>If you have any questions or suggestions, feel free to leave a comment below.</p>
-
-<p><strong>Next time</strong>, we’ll look at how some popular operating systems handle memory management and swap strategies.</p>
-
-<p>References:</p>
-
-<ul>
-  <li>https://www.kernel.org/doc/html/latest/admin-guide/blockdev/zram.html</li>
-  <li>https://dev.to/archerallstars/lets-fine-tune-your-zram-aka-free-ram-in-opensuse-with-zstandard-aka-zstd-4eap</li>
-</ul>]]></content><author><name></name></author><category term="utilities" /><category term="linux" /><summary type="html"><![CDATA[Sharing my experience with ZRAM on Linux—how it helped my low-RAM laptop feel faster by using compressed swap in RAM.]]></summary></entry><entry><title type="html">P2P - UDP Hole Punching</title><link href="https://www.dinhphu28.com/blog/2024/udp-hole-punching/" rel="alternate" type="text/html" title="P2P - UDP Hole Punching" /><published>2024-11-29T04:59:00+00:00</published><updated>2024-11-29T04:59:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/udp-hole-punching</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/udp-hole-punching/"><![CDATA[<h3 id="introduction">Introduction</h3>
-
-<p>UDP hole punching is a technique for establishing bidirectional UDP connections between two networked devices behind NATs.</p>
-
-<p>But this technique is not always applicable because of multiple types of NATs.</p>
-
-<p>In this article, we will discuss the UDP hole punching concept and how it works.</p>
-
-<h3 id="what-is-nat">What is NAT?</h3>
-
-<p>Because of the limited availability of IPv4, Network Address Translation (NAT) was introduced to allow multiple devices to share a single public IP address.</p>
-
-<p>NAT remaps the private IP:port of devices in private networks to a public IP:port.</p>
-
-<p>There are multiple types of NATs, but for simplicity, we can categorize them into 2 types: Symmetric and anything else.</p>
-
-<ul>
-  <li>Symmetric NAT remaps the public port depending on the endpoint.</li>
-  <li>Other types of NATs are independent.</li>
-</ul>
-
-<h3 id="how-does-udp-hole-punching-work">How does UDP hole punching work?</h3>
-
-<p>This technique is originally to solve the firewall problem, because this problem is about NAT &amp; firewall. So we assume that the NAT is include firewall.</p>
-
-<p>Not as TCP, UDP is connectionless and doesn’t have a handshake mechanism. So when we send a packet out, it doesn’t care that it will reach the destination or not, and any packet coming back is considered as a response.</p>
-
-<p>Assume that we have known public IP:port of A and B.</p>
-
-<p>Idea of UDP hole punching is tricking NATs to allow incoming packets from the destination. There are 2 step to archive this:</p>
-
-<ul>
-  <li>A sends a packet to B (this packet will be lost because B is also behind NAT)</li>
-  <li>B sends a packet to A, because NAT considers this as a response, packet will be allowed to pass</li>
-</ul>
-
-<p>But problem of NAT is we don’t know the public port of A and B. So we need a third party to help us, this is a device at the public side can see both public side of A and B. It’s called STUN server.</p>
-
-<p>STUN server listens on a well-known port and when A and B want to establish a connection, they send a request to STUN server to get their public IP:port.</p>
-
-<p>Then A and B exchange their public IP:port and send a packet to each other to establish a connection.</p>
-
-<p>Because of endpoint independent, non-symmetric NAT always remaps the private IP:port to a fixed public IP:port, the port they get from STUN when sending request is the same when sending packet to each other.</p>
-
-<p>Let do a simple example with netcat:</p>
-
-<p>Server S’s IP: <em>14.123.124.125</em></p>
-
-<ol>
-  <li>Server S listening on 3478/UDP (act as a STUN server)</li>
-</ol>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-luvn</span> 3478
-</code></pre></div></div>
-
-<ol>
-  <li>Client A send a request to S on 3478/UDP</li>
-</ol>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50001 14.123.124.125 3478
-</code></pre></div></div>
-
-<p>We can see the source IP:port is <strong><em>11.100.101.102:23241</em></strong></p>
-
-<ol>
-  <li>Back to step 1</li>
-  <li>Client B send a request to S on 3478/UDP</li>
-</ol>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50002 14.123.124.125 3478
-</code></pre></div></div>
-
-<p>We can see the source IP:port is <strong><em>12.100.101.201:37261</em></strong></p>
-
-<p>Now we have known public IP:port of A and B</p>
-
-<p>Establish the P2P connection:</p>
-
-<ol>
-  <li>A send a request to B on <strong><em>37261</em></strong></li>
-</ol>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50001 12.100.101.201 37261
-</code></pre></div></div>
-
-<p>Nothing happened</p>
-
-<ol>
-  <li>B send a request to A on <strong><em>23241</em></strong></li>
-</ol>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50002 12.100.101.201 23241
-</code></pre></div></div>
-
-<p>Now A and B have established a connection. Type something on A, we can see it on B and vice versa.</p>
-
-<p>But this just solve the non-symmetric NAT, for symmetric which we cannot predict the public port, we need a relay server call TURN.</p>
-
-<p>This is the last resort when STUN technique doesn’t work.</p>
-
-<h3 id="stun-turn-and-ice">STUN, TURN and ICE</h3>
-
-<p>Interactive Connectivity Establishment (ICE) is a standard for using STUN and TURN to provide a solution for NAT traversal.</p>
-
-<p>They are used in WebRTC, VoIP and many P2P applications.</p>
-
-<p>Mesh VPN is a good example of using ICE to establish a P2P connection.</p>
-
-<h3 id="conclusion">Conclusion</h3>
-
-<p>In this article, we have discussed the concept of UDP hole punching and how it works, and what is STUN, TURN, ICE and how they resolve the NAT traversal problem.</p>
-
-<p>In case you have any questions, feel free to ask or share your opinion in the comment section.</p>
-
-<p>If you care about my VPN setup with Hub and Spoke, read <a href="/blog/2024/hub-spoke-vpn/">this article</a></p>]]></content><author><name></name></author><category term="networking" /><category term="p2p" /><category term="nat" /><category term="stun" /><category term="ice" /><category term="network" /><summary type="html"><![CDATA[UDP hole punching is a technique for establishing bidirectional UDP connections between two networked devices behind NATs.]]></summary></entry><entry><title type="html">Hub and Spoke VPN, how it solve my working problem</title><link href="https://www.dinhphu28.com/blog/2024/hub-spoke-vpn/" rel="alternate" type="text/html" title="Hub and Spoke VPN, how it solve my working problem" /><published>2024-11-29T03:59:00+00:00</published><updated>2024-11-29T03:59:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/hub-spoke-vpn</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/hub-spoke-vpn/"><![CDATA[<h3 id="introduction">Introduction</h3>
-
-<p>Hub &amp; Spoke VPN is a VPN network topology that connects multiple remote peers (spokes) to a central location (hub) to provide secure communication between them.</p>
-
-<p>Spokes can only communicate with each other through the hub. The hub is a single point of failure, so if we want a reliable network, we need to increase the availability of the hub.</p>
-
-<p>In this post, we will discuss the Hub &amp; Spoke VPN and how it solve the problem of working activity in the remote area.</p>
-
-<h3 id="problem">Problem</h3>
-
-<p>I’m a software engineer usually working in the office. But sometimes I need to work remotely from home, coffee shop, or other place. And I also want to build a server that can be accessed from anywhere securely.</p>
-
-<h3 id="what-we-need">What we need</h3>
-
-<pre><code class="language-mermaid">flowchart TB
+</code></pre></div></div> <p>Because of ZRAM swap (data compression), data should be pushed into ZRAM as soon as possible. Swappiness should be <code class="language-plaintext highlighter-rouge">180</code>.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl vm.swappiness<span class="o">=</span>180
+</code></pre></div></div> <p>With <code class="language-plaintext highlighter-rouge">zstd</code>, <code class="language-plaintext highlighter-rouge">vm.page-cluster</code> should be <code class="language-plaintext highlighter-rouge">0</code> because of decompression.</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sysctl vm.page-cluster<span class="o">=</span>0
+</code></pre></div></div> <h2 id="conclusion">Conclusion</h2> <p>I’ve been using <strong>ZRAM</strong> for a while now, and I can confidently say it has significantly improved my system’s performance. At the very least, it allows me to open dozens of browser tabs and run multiple applications without noticeable slowdowns.</p> <p>That said, ZRAM is <strong>not a replacement for physical RAM</strong>. Instead, it’s a smart way to make better use of the RAM you already have—especially under memory pressure.</p> <p>If your system has plenty of RAM, ZRAM might not be necessary. In fact, the CPU overhead for compression and decompression could slightly degrade performance in such cases.</p> <p>But if you’re working with a <strong>low-end system or limited RAM</strong>, ZRAM can be a game-changer. It provides a noticeable performance boost with minimal setup.</p> <p>Thanks for reading! I hope you found this post helpful.</p> <p>If you have any questions or suggestions, feel free to leave a comment below.</p> <p><strong>Next time</strong>, we’ll look at how some popular operating systems handle memory management and swap strategies.</p> <p>References:</p> <ul> <li>https://www.kernel.org/doc/html/latest/admin-guide/blockdev/zram.html</li> <li>https://dev.to/archerallstars/lets-fine-tune-your-zram-aka-free-ram-in-opensuse-with-zstandard-aka-zstd-4eap</li> </ul>]]></content><author><name></name></author><category term="utilities"/><category term="linux"/><summary type="html"><![CDATA[Sharing my experience with ZRAM on Linux—how it helped my low-RAM laptop feel faster by using compressed swap in RAM.]]></summary></entry><entry><title type="html">P2P - UDP Hole Punching</title><link href="https://www.dinhphu28.com/blog/2024/udp-hole-punching/" rel="alternate" type="text/html" title="P2P - UDP Hole Punching"/><published>2024-11-29T04:59:00+00:00</published><updated>2024-11-29T04:59:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/udp-hole-punching</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/udp-hole-punching/"><![CDATA[<h3 id="introduction">Introduction</h3> <p>UDP hole punching is a technique for establishing bidirectional UDP connections between two networked devices behind NATs.</p> <p>But this technique is not always applicable because of multiple types of NATs.</p> <p>In this article, we will discuss the UDP hole punching concept and how it works.</p> <h3 id="what-is-nat">What is NAT?</h3> <p>Because of the limited availability of IPv4, Network Address Translation (NAT) was introduced to allow multiple devices to share a single public IP address.</p> <p>NAT remaps the private IP:port of devices in private networks to a public IP:port.</p> <p>There are multiple types of NATs, but for simplicity, we can categorize them into 2 types: Symmetric and anything else.</p> <ul> <li>Symmetric NAT remaps the public port depending on the endpoint.</li> <li>Other types of NATs are independent.</li> </ul> <h3 id="how-does-udp-hole-punching-work">How does UDP hole punching work?</h3> <p>This technique is originally to solve the firewall problem, because this problem is about NAT &amp; firewall. So we assume that the NAT is include firewall.</p> <p>Not as TCP, UDP is connectionless and doesn’t have a handshake mechanism. So when we send a packet out, it doesn’t care that it will reach the destination or not, and any packet coming back is considered as a response.</p> <p>Assume that we have known public IP:port of A and B.</p> <p>Idea of UDP hole punching is tricking NATs to allow incoming packets from the destination. There are 2 step to archive this:</p> <ul> <li>A sends a packet to B (this packet will be lost because B is also behind NAT)</li> <li>B sends a packet to A, because NAT considers this as a response, packet will be allowed to pass</li> </ul> <p>But problem of NAT is we don’t know the public port of A and B. So we need a third party to help us, this is a device at the public side can see both public side of A and B. It’s called STUN server.</p> <p>STUN server listens on a well-known port and when A and B want to establish a connection, they send a request to STUN server to get their public IP:port.</p> <p>Then A and B exchange their public IP:port and send a packet to each other to establish a connection.</p> <p>Because of endpoint independent, non-symmetric NAT always remaps the private IP:port to a fixed public IP:port, the port they get from STUN when sending request is the same when sending packet to each other.</p> <p>Let do a simple example with netcat:</p> <p>Server S’s IP: <em>14.123.124.125</em></p> <ol> <li>Server S listening on 3478/UDP (act as a STUN server)</li> </ol> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-luvn</span> 3478
+</code></pre></div></div> <ol> <li>Client A send a request to S on 3478/UDP</li> </ol> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50001 14.123.124.125 3478
+</code></pre></div></div> <p>We can see the source IP:port is <strong><em>11.100.101.102:23241</em></strong></p> <ol> <li>Back to step 1</li> <li>Client B send a request to S on 3478/UDP</li> </ol> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50002 14.123.124.125 3478
+</code></pre></div></div> <p>We can see the source IP:port is <strong><em>12.100.101.201:37261</em></strong></p> <p>Now we have known public IP:port of A and B</p> <p>Establish the P2P connection:</p> <ol> <li>A send a request to B on <strong><em>37261</em></strong></li> </ol> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50001 12.100.101.201 37261
+</code></pre></div></div> <p>Nothing happened</p> <ol> <li>B send a request to A on <strong><em>23241</em></strong></li> </ol> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc <span class="nt">-vu</span> <span class="nt">-p</span> 50002 12.100.101.201 23241
+</code></pre></div></div> <p>Now A and B have established a connection. Type something on A, we can see it on B and vice versa.</p> <p>But this just solve the non-symmetric NAT, for symmetric which we cannot predict the public port, we need a relay server call TURN.</p> <p>This is the last resort when STUN technique doesn’t work.</p> <h3 id="stun-turn-and-ice">STUN, TURN and ICE</h3> <p>Interactive Connectivity Establishment (ICE) is a standard for using STUN and TURN to provide a solution for NAT traversal.</p> <p>They are used in WebRTC, VoIP and many P2P applications.</p> <p>Mesh VPN is a good example of using ICE to establish a P2P connection.</p> <h3 id="conclusion">Conclusion</h3> <p>In this article, we have discussed the concept of UDP hole punching and how it works, and what is STUN, TURN, ICE and how they resolve the NAT traversal problem.</p> <p>In case you have any questions, feel free to ask or share your opinion in the comment section.</p> <p>If you care about my VPN setup with Hub and Spoke, read <a href="/blog/2024/hub-spoke-vpn/">this article</a></p>]]></content><author><name></name></author><category term="networking"/><category term="p2p"/><category term="nat"/><category term="stun"/><category term="ice"/><category term="network"/><summary type="html"><![CDATA[UDP hole punching is a technique for establishing bidirectional UDP connections between two networked devices behind NATs.]]></summary></entry><entry><title type="html">Hub and Spoke VPN, how it solve my working problem</title><link href="https://www.dinhphu28.com/blog/2024/hub-spoke-vpn/" rel="alternate" type="text/html" title="Hub and Spoke VPN, how it solve my working problem"/><published>2024-11-29T03:59:00+00:00</published><updated>2024-11-29T03:59:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/hub-spoke-vpn</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/hub-spoke-vpn/"><![CDATA[<h3 id="introduction">Introduction</h3> <p>Hub &amp; Spoke VPN is a VPN network topology that connects multiple remote peers (spokes) to a central location (hub) to provide secure communication between them.</p> <p>Spokes can only communicate with each other through the hub. The hub is a single point of failure, so if we want a reliable network, we need to increase the availability of the hub.</p> <p>In this post, we will discuss the Hub &amp; Spoke VPN and how it solve the problem of working activity in the remote area.</p> <h3 id="problem">Problem</h3> <p>I’m a software engineer usually working in the office. But sometimes I need to work remotely from home, coffee shop, or other place. And I also want to build a server that can be accessed from anywhere securely.</p> <h3 id="what-we-need">What we need</h3> <pre><code class="language-mermaid">flowchart TB
     subgraph TOPOLOGY["&lt;i class='mdi mdi-cloud-outline'&gt;&lt;/i&gt; Topology"]
         direction TB
 
@@ -577,155 +100,12 @@ openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> dinhp
     internet -.-&gt;|Public Access 443/TCP| hub
     hub ---|NAT 443/TCP via Tunnel| homesrv
 
-</code></pre>
-
-<ul>
-  <li>A secure &amp; manageable network to setup VPN server (hub), so I will use my home network.</li>
-  <li>A device acts as a VPN server (hub), it can be an old computer, Raspberry Pi or any device that can run VPN server software.</li>
-  <li>One or more VPN clients (spokes), in my case, they are my laptop, smartphone and a personal server, all of them are in other locations and in different private networks.</li>
-</ul>
-
-<p>I will use OpenVPN because it can be installed on many platforms and easy to use. Make sure you have enabled client to client communication.</p>
-
-<p>My hub is a Raspberry Pi running Raspbian OS and iptables (default).</p>
-
-<p>Install OpenVPN client on personal server, laptop and any device you want to join the VPN network.</p>
-
-<p>Connect the VPN clients to the VPN server (hub) using the OpenVPN client software, setup auto connect. Boom! Now you can access your home server or other devices in the VPN network.</p>
-
-<p>In case you want to access the internet though the hub, setup the VPN server to route all traffic though it.</p>
-
-<p>Because I have a server and want to publish my some services to the Internet, I will setup port forwarding (NAT) on the hub to forward the traffic to the server.
-To optimize the bandwidth, the server which only listens traffic from the hub, only routing traffic of VPN subnet via tun interface, default is to the Internet.</p>
-
-<p>For some work that I need the office’s computer and some resources in the office’s network, connect the office’s computer to the VPN network then start a proxy server on this computer.</p>
-
-<h3 id="use-cases">Use cases</h3>
-
-<p>I usually use this setup for:</p>
-
-<ul>
-  <li>Securely Internet access when I’m in public places.</li>
-  <li>Access my home server and office’s computer from anywhere.</li>
-  <li>Communicate with other devices in the VPN network.</li>
-  <li>Seamlessly work in the remote area.</li>
-  <li>Publish services to the Internet with server at any location.</li>
-</ul>
-
-<p>With me, working almost on the CLI, so with neovim, tmux, ssh and other tools, I can work seamlessly anywhere, any device which have terminal emulator and internet connection.
-I call this setup Unified Working Environment.</p>
-
-<h3 id="pros--cons">Pros &amp; Cons</h3>
-
-<h4 id="pros">Pros</h4>
-
-<ul>
-  <li>Centralized communication</li>
-  <li>Cost effective</li>
-  <li>Easy to control security</li>
-</ul>
-
-<h4 id="cons">Cons</h4>
-
-<ul>
-  <li>
-    <p>Single point of failure</p>
-
-    <blockquote>
-      <p>Because hub is the central point, if it goes down, all spokes will lose connection to each other.</p>
-    </blockquote>
-  </li>
-  <li>
-    <p>Bottleneck</p>
-
-    <blockquote>
-      <p>All traffic between spokes must go through the hub, so the hub can be a bottleneck. So if you have many spokes and need high bandwidth, you can consider a mesh network.
-I suggest Tailscale, it’s easy to use and setup and can be used for free.</p>
-    </blockquote>
-  </li>
-</ul>
-
-<h3 id="conclusion">Conclusion</h3>
-
-<p>In this article, I will show you my hub &amp; spoke VPN setup and how it helps me in my working activities. I hope you can find it useful and apply it to your work.</p>
-
-<p>If you have any questions, suggestions or your own setup, please leave a comment below.</p>]]></content><author><name></name></author><category term="networking" /><category term="vpn" /><category term="network" /><category term="security" /><summary type="html"><![CDATA[Hub & Spoke VPN is a VPN network topology that connects multiple remote peers (spokes) to a central location (hub) to provide secure communication between them.]]></summary></entry><entry><title type="html">Generate password with command line in Linux or macOS</title><link href="https://www.dinhphu28.com/blog/2024/generate-password-cli/" rel="alternate" type="text/html" title="Generate password with command line in Linux or macOS" /><published>2024-11-09T09:16:00+00:00</published><updated>2024-11-09T09:16:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/generate-password-cli</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/generate-password-cli/"><![CDATA[<p>Most websites or application require a strong password that contains a mix of letters, numbers and special characters. And to make it more secure, it should be unique and randomly generated for each account.
-If you are using Linux or macOS and usually work with command line, you can use it to generate without installing any additional application.</p>
-
-<h3 id="using-devurandom-or-devrandom">Using /dev/urandom or /dev/random</h3>
-
-<p>This is my favorite way to generate password because <code class="language-plaintext highlighter-rouge">/dev/urandom</code> and <code class="language-plaintext highlighter-rouge">/dev/random</code> are available in most Unix-like operating systems.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt; /dev/urandom <span class="nb">tr</span> <span class="nt">-dc</span> <span class="s1">'[:graph:]'</span> | <span class="nb">head</span> <span class="nt">-c32</span><span class="p">;</span> <span class="nb">echo</span>
-</code></pre></div></div>
-
-<p>This command will create a random password with printable character, length is 32.</p>
-
-<p>In case that alphabet &amp; numeric character, use <code class="language-plaintext highlighter-rouge">alnum</code> instead of <code class="language-plaintext highlighter-rouge">graph</code>.</p>
-
-<p>For more information, see <code class="language-plaintext highlighter-rouge">tr</code> <a href="https://linuxcommand.org/lc3_man_pages/tr1.html">manpage</a></p>
-
-<p>With macOS, an error occur when run above command because of UTF-8. Just add LC_ALL=C as below:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt; /dev/urandom <span class="nv">LC_ALL</span><span class="o">=</span>C <span class="nb">tr</span> <span class="nt">-dc</span> <span class="s1">'[:graph:]'</span> | <span class="nb">head</span> <span class="nt">-c32</span><span class="p">;</span> <span class="nb">echo</span>
-</code></pre></div></div>
-
-<h4 id="random">Random</h4>
-
-<p>/dev/random takes the random values from the entropy pool. If the entropy pool is empty, it will be blocked reading.</p>
-
-<h4 id="urandom-unlimited-random">URandom (Unlimited Random)</h4>
-
-<p>/dev/urandom is similar to /dev/random but in case that entropy pool is empty, it generate value using hashing argorithm such as: SHA, MD5, …</p>
-
-<h4 id="in-term-of-security">In term of security</h4>
-
-<p>Because of high-quality randomness of /dev/random, it’s suitable for a password or a task focus on security.</p>
-
-<h3 id="using-openssl">Using openssl</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rand <span class="nt">-base64</span> 32
-</code></pre></div></div>
-
-<p>This command can only generate a base64 string password.</p>
-
-<h3 id="using-date-and-hashing">Using date and hashing</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date</span> | md5
-</code></pre></div></div>
-
-<p>It similar to openssl command, but it’s not really random like openssl or /dev/urandom.</p>
-
-<h3 id="using-gpg">Using gpg</h3>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--gen-random</span> 1 32
-</code></pre></div></div>]]></content><author><name></name></author><category term="utilities" /><category term="cli" /><category term="password-generating" /><category term="command-line" /><category term="linux" /><category term="macos" /><summary type="html"><![CDATA[If you usually work with command line in Linux or macOS, you can use it to generate password without installing any additional application.]]></summary></entry><entry><title type="html">Mình đã chuyển sang Fcitx5 thay vì IBus Bamboo và IBus Unikey</title><link href="https://www.dinhphu28.com/blog/2024/fcitx5-unikey-go-tieng-viet/" rel="alternate" type="text/html" title="Mình đã chuyển sang Fcitx5 thay vì IBus Bamboo và IBus Unikey" /><published>2024-04-06T09:16:00+00:00</published><updated>2024-04-06T09:16:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/fcitx5-unikey-go-tieng-viet</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/fcitx5-unikey-go-tieng-viet/"><![CDATA[<h3 id="giới-thiệu">Giới thiệu</h3>
-
-<p>Trước đây lúc mới bước chân vào xài Linux cách đây 6 năm, mình đã bắt đầu với Ubuntu (GNOME) và IBus Unikey, sau một thời gian cảm thấy bộ gõ này không đáp ứng được nhu cầu của bản thân, mình đã tìm thấy một bộ gõ tương tự nhưng hỗ trợ nhiều tính năng hơn là IBus Bamboo và mình đã xài đến tận đầu năm 2024.</p>
-
-<p>Khoảng thời gian này mình thường xài 2 distro chính là Ubuntu rồi sau đó là Fedora với Desktop Environment là GNOME, mọi thứ vẫn hoạt động khá tốt đẹp, cho đến một ngày đầu năm 2024, mình quyết định chuyển sang xài KDE Plasma (Wayland) trên openSUSE Tumbleweed và đây là lúc mọi vấn đề bắt đầu.</p>
-
-<p>Sau khi cài đặt IBus Bamboo, chế độ gõ mặc định gạch chân được chọn và mình không có cách nào để chuyển chế độ gõ, chọn menu IBus trên menu bar lại không hoạt động bình thường, lúc hiển thị lúc không và cũng hiển thị không đúng. Thậm chí một khi menu hiển thị và hover vào chọn ‘Chế độ gõ mặc định’ thì ngay lập tức menu bị nháy một cái và hidden luôn, nếu vẫn cố gắng làm lại thì sẽ crash luôn menu bar.</p>
-
-<p>Một vấn đề nữa mình gặp phải là lúc đang để chế độ ‘Tiếng Việt’ do không chuyển được chế độ gõ mặc định nên gõ password bị lộ ra hết.</p>
-
-<p>Lúc này mình đã tìm đến một bộ gõ khác là <code class="language-plaintext highlighter-rouge">fcitx5</code> và mọi vấn đề được giải quyết.</p>
-
-<h3 id="cài-đặt">Cài đặt</h3>
-
-<ul>
-  <li>fcitx5</li>
-  <li>fcitx5-qt</li>
-  <li>fcitx5-gtk</li>
-  <li>fcitx5-unikey</li>
-  <li>kcm-fcitx5</li>
-</ul>
-
-<p>Hiện mình đang xài openSUSE Tumbleweed và có thể cài từ các resources sau:</p>
-
-<p>Truy cập <a href="https://software.opensuse.org//download.html?project=openSUSE%3AFactory&amp;package=fcitx5">fcitx5</a>, <a href="">fcitx5-qt</a>, <a href="https://software.opensuse.org/package/fcitx5-gtk">fcitx5-gtk</a>, <a href="https://software.opensuse.org/download/package?package=fcitx5-unikey&amp;project=M17N">fcitx5-unikey</a>, <a href="https://software.opensuse.org/download/package?package=kcm5-fcitx&amp;project=openSUSE%3AFactory">kcm5-fcitx</a> tải xuống các files .ymp (click download) và click to install (đây cũng là một điểm mình khá thích openSUSE so với các distro khác từng xài trước đây) hoặc cũng có thể cài đặt qua script:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>zypper addrepo https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
+</code></pre> <ul> <li>A secure &amp; manageable network to setup VPN server (hub), so I will use my home network.</li> <li>A device acts as a VPN server (hub), it can be an old computer, Raspberry Pi or any device that can run VPN server software.</li> <li>One or more VPN clients (spokes), in my case, they are my laptop, smartphone and a personal server, all of them are in other locations and in different private networks.</li> </ul> <p>I will use OpenVPN because it can be installed on many platforms and easy to use. Make sure you have enabled client to client communication.</p> <p>My hub is a Raspberry Pi running Raspbian OS and iptables (default).</p> <p>Install OpenVPN client on personal server, laptop and any device you want to join the VPN network.</p> <p>Connect the VPN clients to the VPN server (hub) using the OpenVPN client software, setup auto connect. Boom! Now you can access your home server or other devices in the VPN network.</p> <p>In case you want to access the internet though the hub, setup the VPN server to route all traffic though it.</p> <p>Because I have a server and want to publish my some services to the Internet, I will setup port forwarding (NAT) on the hub to forward the traffic to the server. To optimize the bandwidth, the server which only listens traffic from the hub, only routing traffic of VPN subnet via tun interface, default is to the Internet.</p> <p>For some work that I need the office’s computer and some resources in the office’s network, connect the office’s computer to the VPN network then start a proxy server on this computer.</p> <h3 id="use-cases">Use cases</h3> <p>I usually use this setup for:</p> <ul> <li>Securely Internet access when I’m in public places.</li> <li>Access my home server and office’s computer from anywhere.</li> <li>Communicate with other devices in the VPN network.</li> <li>Seamlessly work in the remote area.</li> <li>Publish services to the Internet with server at any location.</li> </ul> <p>With me, working almost on the CLI, so with neovim, tmux, ssh and other tools, I can work seamlessly anywhere, any device which have terminal emulator and internet connection. I call this setup Unified Working Environment.</p> <h3 id="pros--cons">Pros &amp; Cons</h3> <h4 id="pros">Pros</h4> <ul> <li>Centralized communication</li> <li>Cost effective</li> <li>Easy to control security</li> </ul> <h4 id="cons">Cons</h4> <ul> <li> <p>Single point of failure</p> <blockquote> <p>Because hub is the central point, if it goes down, all spokes will lose connection to each other.</p> </blockquote> </li> <li> <p>Bottleneck</p> <blockquote> <p>All traffic between spokes must go through the hub, so the hub can be a bottleneck. So if you have many spokes and need high bandwidth, you can consider a mesh network. I suggest Tailscale, it’s easy to use and setup and can be used for free.</p> </blockquote> </li> </ul> <h3 id="conclusion">Conclusion</h3> <p>In this article, I will show you my hub &amp; spoke VPN setup and how it helps me in my working activities. I hope you can find it useful and apply it to your work.</p> <p>If you have any questions, suggestions or your own setup, please leave a comment below.</p>]]></content><author><name></name></author><category term="networking"/><category term="vpn"/><category term="network"/><category term="security"/><summary type="html"><![CDATA[Hub & Spoke VPN is a VPN network topology that connects multiple remote peers (spokes) to a central location (hub) to provide secure communication between them.]]></summary></entry><entry><title type="html">Generate password with command line in Linux or macOS</title><link href="https://www.dinhphu28.com/blog/2024/generate-password-cli/" rel="alternate" type="text/html" title="Generate password with command line in Linux or macOS"/><published>2024-11-09T09:16:00+00:00</published><updated>2024-11-09T09:16:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/generate-password-cli</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/generate-password-cli/"><![CDATA[<p>Most websites or application require a strong password that contains a mix of letters, numbers and special characters. And to make it more secure, it should be unique and randomly generated for each account. If you are using Linux or macOS and usually work with command line, you can use it to generate without installing any additional application.</p> <h3 id="using-devurandom-or-devrandom">Using /dev/urandom or /dev/random</h3> <p>This is my favorite way to generate password because <code class="language-plaintext highlighter-rouge">/dev/urandom</code> and <code class="language-plaintext highlighter-rouge">/dev/random</code> are available in most Unix-like operating systems.</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt; /dev/urandom <span class="nb">tr</span> <span class="nt">-dc</span> <span class="s1">'[:graph:]'</span> | <span class="nb">head</span> <span class="nt">-c32</span><span class="p">;</span> <span class="nb">echo</span>
+</code></pre></div></div> <p>This command will create a random password with printable character, length is 32.</p> <p>In case that alphabet &amp; numeric character, use <code class="language-plaintext highlighter-rouge">alnum</code> instead of <code class="language-plaintext highlighter-rouge">graph</code>.</p> <p>For more information, see <code class="language-plaintext highlighter-rouge">tr</code> <a href="https://linuxcommand.org/lc3_man_pages/tr1.html">manpage</a></p> <p>With macOS, an error occur when run above command because of UTF-8. Just add LC_ALL=C as below:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt; /dev/urandom <span class="nv">LC_ALL</span><span class="o">=</span>C <span class="nb">tr</span> <span class="nt">-dc</span> <span class="s1">'[:graph:]'</span> | <span class="nb">head</span> <span class="nt">-c32</span><span class="p">;</span> <span class="nb">echo</span>
+</code></pre></div></div> <h4 id="random">Random</h4> <p>/dev/random takes the random values from the entropy pool. If the entropy pool is empty, it will be blocked reading.</p> <h4 id="urandom-unlimited-random">URandom (Unlimited Random)</h4> <p>/dev/urandom is similar to /dev/random but in case that entropy pool is empty, it generate value using hashing argorithm such as: SHA, MD5, …</p> <h4 id="in-term-of-security">In term of security</h4> <p>Because of high-quality randomness of /dev/random, it’s suitable for a password or a task focus on security.</p> <h3 id="using-openssl">Using openssl</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rand <span class="nt">-base64</span> 32
+</code></pre></div></div> <p>This command can only generate a base64 string password.</p> <h3 id="using-date-and-hashing">Using date and hashing</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">date</span> | md5
+</code></pre></div></div> <p>It similar to openssl command, but it’s not really random like openssl or /dev/urandom.</p> <h3 id="using-gpg">Using gpg</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg <span class="nt">--gen-random</span> 1 32
+</code></pre></div></div>]]></content><author><name></name></author><category term="utilities"/><category term="cli"/><category term="password-generating"/><category term="command-line"/><category term="linux"/><category term="macos"/><summary type="html"><![CDATA[If you usually work with command line in Linux or macOS, you can use it to generate password without installing any additional application.]]></summary></entry><entry><title type="html">Mình đã chuyển sang Fcitx5 thay vì IBus Bamboo và IBus Unikey</title><link href="https://www.dinhphu28.com/blog/2024/fcitx5-unikey-go-tieng-viet/" rel="alternate" type="text/html" title="Mình đã chuyển sang Fcitx5 thay vì IBus Bamboo và IBus Unikey"/><published>2024-04-06T09:16:00+00:00</published><updated>2024-04-06T09:16:00+00:00</updated><id>https://www.dinhphu28.com/blog/2024/fcitx5-unikey-go-tieng-viet</id><content type="html" xml:base="https://www.dinhphu28.com/blog/2024/fcitx5-unikey-go-tieng-viet/"><![CDATA[<h3 id="giới-thiệu">Giới thiệu</h3> <p>Trước đây lúc mới bước chân vào xài Linux cách đây 6 năm, mình đã bắt đầu với Ubuntu (GNOME) và IBus Unikey, sau một thời gian cảm thấy bộ gõ này không đáp ứng được nhu cầu của bản thân, mình đã tìm thấy một bộ gõ tương tự nhưng hỗ trợ nhiều tính năng hơn là IBus Bamboo và mình đã xài đến tận đầu năm 2024.</p> <p>Khoảng thời gian này mình thường xài 2 distro chính là Ubuntu rồi sau đó là Fedora với Desktop Environment là GNOME, mọi thứ vẫn hoạt động khá tốt đẹp, cho đến một ngày đầu năm 2024, mình quyết định chuyển sang xài KDE Plasma (Wayland) trên openSUSE Tumbleweed và đây là lúc mọi vấn đề bắt đầu.</p> <p>Sau khi cài đặt IBus Bamboo, chế độ gõ mặc định gạch chân được chọn và mình không có cách nào để chuyển chế độ gõ, chọn menu IBus trên menu bar lại không hoạt động bình thường, lúc hiển thị lúc không và cũng hiển thị không đúng. Thậm chí một khi menu hiển thị và hover vào chọn ‘Chế độ gõ mặc định’ thì ngay lập tức menu bị nháy một cái và hidden luôn, nếu vẫn cố gắng làm lại thì sẽ crash luôn menu bar.</p> <p>Một vấn đề nữa mình gặp phải là lúc đang để chế độ ‘Tiếng Việt’ do không chuyển được chế độ gõ mặc định nên gõ password bị lộ ra hết.</p> <p>Lúc này mình đã tìm đến một bộ gõ khác là <code class="language-plaintext highlighter-rouge">fcitx5</code> và mọi vấn đề được giải quyết.</p> <h3 id="cài-đặt">Cài đặt</h3> <ul> <li>fcitx5</li> <li>fcitx5-qt</li> <li>fcitx5-gtk</li> <li>fcitx5-unikey</li> <li>kcm-fcitx5</li> </ul> <p>Hiện mình đang xài openSUSE Tumbleweed và có thể cài từ các resources sau:</p> <p>Truy cập <a href="https://software.opensuse.org//download.html?project=openSUSE%3AFactory&amp;package=fcitx5">fcitx5</a>, <a href="">fcitx5-qt</a>, <a href="https://software.opensuse.org/package/fcitx5-gtk">fcitx5-gtk</a>, <a href="https://software.opensuse.org/download/package?package=fcitx5-unikey&amp;project=M17N">fcitx5-unikey</a>, <a href="https://software.opensuse.org/download/package?package=kcm5-fcitx&amp;project=openSUSE%3AFactory">kcm5-fcitx</a> tải xuống các files .ymp (click download) và click to install (đây cũng là một điểm mình khá thích openSUSE so với các distro khác từng xài trước đây) hoặc cũng có thể cài đặt qua script:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>zypper addrepo https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
 <span class="nb">sudo </span>zypper addrepo https://download.opensuse.org/repositories/M17N/openSUSE_Tumbleweed/M17N.repo
 <span class="nb">sudo </span>zypper refresh
 <span class="nb">sudo </span>zypper <span class="nb">install </span>fcitx5
@@ -733,25 +113,5 @@ If you are using Linux or macOS and usually work with command line, you can use 
 <span class="nb">sudo </span>zypper <span class="nb">install </span>fcitx5-gtk
 <span class="nb">sudo </span>zypper <span class="nb">install </span>kcm5-fcitx
 <span class="nb">sudo </span>zypper <span class="nb">install </span>fcitx5-unikey
-</code></pre></div></div>
-
-<p>Để chọn bộ gõ, vào <code class="language-plaintext highlighter-rouge">System Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Virtual Keyboard</code> chọn fcitx5.</p>
-
-<p><strong><em>Lưu ý:</em></strong> Nếu xài Wayland, khi khởi động các app các bạn nhớ thêm các options <code class="language-plaintext highlighter-rouge">--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime</code>.</p>
-
-<p>Ví dụ khi mình xài Typora:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Typora <span class="nt">--enable-features</span><span class="o">=</span>UseOzonePlatform <span class="nt">--ozone-platform</span><span class="o">=</span>wayland <span class="nt">--enable-wayland-ime</span>
-</code></pre></div></div>
-
-<p>Tuy nhiên mình thường tạo/chỉnh sửa file <em>.desktop</em> rồi thêm options này vô luôn để mở app cho tiện.</p>
-
-<p>Mình viết bài này nhằm mục đích chia sẻ trải nghiệm gõ Tiếng Việt trên linux của cá nhân mình, đồng thời hy vọng có thể giúp các bạn cũng đã và đang gặp phải vấn đề tương tự như mình.</p>
-
-<p>Theo mình, IBus Bamboo vẫn là bộ gõ hoạt động rất tốt với GNOME vì một khoảng thời gian gần 6 năm mình vẫn hài lòng với nó, và fcitx5 là một lựa chọn tốt đối với KDE (ít nhất theo cảm nhận của mình hiện tại).</p>
-
-<p>Một số tài liệu tham khảo thêm:</p>
-
-<ul>
-  <li>https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland</li>
-</ul>]]></content><author><name></name></author><category term="utilities" /><category term="fcitx5" /><category term="unikey" /><category term="vietnamese" /><summary type="html"><![CDATA[Bộ gõ Tiếng Việt thay thế cho IBus Unikey và IBus Bamboo]]></summary></entry></feed>
+</code></pre></div></div> <p>Để chọn bộ gõ, vào <code class="language-plaintext highlighter-rouge">System Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Virtual Keyboard</code> chọn fcitx5.</p> <p><strong><em>Lưu ý:</em></strong> Nếu xài Wayland, khi khởi động các app các bạn nhớ thêm các options <code class="language-plaintext highlighter-rouge">--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime</code>.</p> <p>Ví dụ khi mình xài Typora:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Typora <span class="nt">--enable-features</span><span class="o">=</span>UseOzonePlatform <span class="nt">--ozone-platform</span><span class="o">=</span>wayland <span class="nt">--enable-wayland-ime</span>
+</code></pre></div></div> <p>Tuy nhiên mình thường tạo/chỉnh sửa file <em>.desktop</em> rồi thêm options này vô luôn để mở app cho tiện.</p> <p>Mình viết bài này nhằm mục đích chia sẻ trải nghiệm gõ Tiếng Việt trên linux của cá nhân mình, đồng thời hy vọng có thể giúp các bạn cũng đã và đang gặp phải vấn đề tương tự như mình.</p> <p>Theo mình, IBus Bamboo vẫn là bộ gõ hoạt động rất tốt với GNOME vì một khoảng thời gian gần 6 năm mình vẫn hài lòng với nó, và fcitx5 là một lựa chọn tốt đối với KDE (ít nhất theo cảm nhận của mình hiện tại).</p> <p>Một số tài liệu tham khảo thêm:</p> <ul> <li>https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland</li> </ul>]]></content><author><name></name></author><category term="utilities"/><category term="fcitx5"/><category term="unikey"/><category term="vietnamese"/><summary type="html"><![CDATA[Bộ gõ Tiếng Việt thay thế cho IBus Unikey và IBus Bamboo]]></summary></entry></feed>
