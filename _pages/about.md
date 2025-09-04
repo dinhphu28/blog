@@ -13,9 +13,9 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>512 Nguyen Xien, Long Thanh My Ward</p>
-    <p>Thu Duc City, Ho Chi Minh City</p>
+    Writing code, breaking code, fixing code — usually in that order.
+    Known to talk more with terminals than with humans.
+    Powered by coffee, sustained by Git commits.
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
