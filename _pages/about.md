@@ -3,7 +3,7 @@ layout: about
 title: about
 permalink: /
 subtitle: >
-  Software Engineer .
+  Software Engineer ·
   <a href='https://github.com/dinhphu28'>GitHub</a> ·
   <a href='mailto:dinhphu28@dinhphu28.com'>Email</a> ·
   Documenting the journey, not just the results · Ho Chi Minh City, Vietnam
