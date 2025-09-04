@@ -67,7 +67,9 @@ layout: default
       {{ content }}
     </div>
 
-    {% include buymeacoffee.liquid %}
+    {% if page.buymeacoffee != false %}
+      {% include buymeacoffee.liquid %}
+    {% endif %}
   </article>
 
   {% if page.related_publications %}
