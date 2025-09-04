@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href='https://buymeacoffee.com/dinhphu28'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
