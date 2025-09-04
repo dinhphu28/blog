@@ -42,7 +42,9 @@ layout: default
       {{ content }}
 
       <div style="margin-top: 1.5rem; text-align: center;">
-        {% include buymeacoffee.liquid %}
+        {% if page.support != false %}
+          {% include support.liquid %}
+        {% endif %}
       </div>
     </div>
 
