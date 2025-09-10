@@ -72,7 +72,7 @@ set_var EASYRSA_REQ_ORG        "DINHPHU28 EC CA"
 set_var EASYRSA_REQ_OU         "Intermediate"
 ```
 
-### Initialize and Create Request
+### 1. Initialize and Create Request
 
 ```sh
 ./easyrsa init-pki
@@ -81,19 +81,26 @@ set_var EASYRSA_REQ_OU         "Intermediate"
 
 Transfer `intermediate-ca.req` to the **offline Root CA**.
 
-### At the Root CA
+### 2. At the Root CA
 
 ```sh
 ./easyrsa import-req /path/to/intermediate-ca.req intermediate-ca
 EASYRSA_NO_SAN=1 ./easyrsa sign-req caRestricted intermediate-ca
 ```
 
-### Back at Intermediate CA
+### 3. Back at Intermediate CA
 
 ```sh
 cp /path/to/intermediate-ca.crt pki/ca.crt
 cp /path/to/root-ca/pki/ca.crt pki/root-ca.crt
 cat pki/ca.crt pki/root-ca.crt > pki/ca-chain.crt
+```
+
+In case system warns missing files/directories, create them:
+
+```sh
+touch pki/serial
+mkdir pki/certs_by_serial
 ```
 
 You now have a functional Intermediate CA.
