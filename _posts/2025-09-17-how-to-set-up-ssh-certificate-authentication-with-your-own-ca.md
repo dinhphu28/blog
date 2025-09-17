@@ -76,7 +76,7 @@ ssh-keygen -s host_ca_key -I dinhphu28-mac-machine -h \
 
 `/etc/ssh/sshd_config`:
 
-```ini
+```text
 HostKey /usr/etc/ssh/ssh_host_ed25519_key
 HostCertificate /usr/etc/ssh/ssh_host_ed25519_key-cert.pub
 TrustedUserCAKeys /usr/etc/ssh/user_ca_key.pub
@@ -107,7 +107,7 @@ ssh-keygen -s user_ca_key -I "robert@dinhphu28.com" -n "robert" -V +1d id_ed2551
 Move cert to `~/.ssh/`.
 Add Host CA to `~/.ssh/known_hosts`:
 
-```ini
+```text
 @cert-authority *.dinhphu28.com,10.8.0.6 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFraYAO41YSLterrzte7TknguJWpTrCNC8MCL6xbcvbw
 ```
 
