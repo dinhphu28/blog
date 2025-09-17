@@ -1,0 +1,6 @@
+# Ignore HashiCorp docs (rate-limited)
+https://developer.hashicorp.com/vault/docs/secrets/ssh
+
+# Or ignore all of developer.hashicorp.com
+https://developer.hashicorp.com/.*
+
