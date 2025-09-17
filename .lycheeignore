@@ -4,3 +4,6 @@ https://developer.hashicorp.com/vault/docs/secrets/ssh
 # Or ignore all of developer.hashicorp.com
 https://developer.hashicorp.com/.*
 
+# [Temporary] Ignore fcitx5-gtk due to 400 Bad Request
+https://software.opensuse.org/package/fcitx5-gtk
+
