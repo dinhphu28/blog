@@ -103,6 +103,6 @@ Each time I added a new device or user, managing credentials was painful. Buildi
 
 ## What’s Next?
 
-In [Part 2](/blog/2025/build-a-root-and-intermediate-certificate-authority-with-easy-rsa), I’ll walk you through the exact steps I used to build a Root CA, an Intermediate CA, and generate certificates with Easy-RSA.
+In [Part 2]({% post_url 2025-07-14-build-a-root-and-intermediate-certificate-authority-with-easy-rsa %}), I’ll walk you through the exact steps I used to build a Root CA, an Intermediate CA, and generate certificates with Easy-RSA.
 
 Stay tuned!
