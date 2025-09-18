@@ -502,3 +502,8 @@ buymeacoffee:
 sponsor:
   enabled: true
   github: dinhphu28
+
+vietnam_qr:
+  enabled: true
+  location_detect: true
+  fallback: true
