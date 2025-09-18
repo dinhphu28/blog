@@ -11,7 +11,7 @@ toc:
   beginning: true
 ---
 
-> 📖 This post continues from [Part 1: Why Build Your Own Certificate Authority]({$ post_url 2025-07-14-why-build-your-own-certificate-authority %})
+> 📖 This post continues from [Part 1: Why Build Your Own Certificate Authority]({% post_url 2025-07-14-why-build-your-own-certificate-authority %})
 
 ## Root CA Setup
 
