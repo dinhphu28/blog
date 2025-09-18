@@ -1,39 +1,92 @@
 {% assign bmc = site.buymeacoffee %}
 {% assign sp = site.sponsor %}
-<div class="support-buttons" style="margin-top:1.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-  {% if bmc and bmc.enabled and bmc.username %}
-    {% if bmc.mode == 'floating' %}
-      <script
-        data-name="BMC-Widget"
-        data-cfasync="false"
-        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-        data-id="{{ bmc.username | escape }}"
-        data-description="{{ bmc.description | default: 'Support me on Buy me a coffee!' | escape }}"
-        data-message="{{ bmc.message | escape }}"
-        data-color="{{ bmc.color | default: '#FF5F5F' }}"
-        data-position="{{ bmc.position | default: 'Right' }}"
-        data-x_margin="{{ bmc.x_margin | default: 18 }}"
-        data-y_margin="{{ bmc.y_margin | default: 18 }}"
-      ></script>
-    {% else %}
-      <a href="https://www.buymeacoffee.com/{{ bmc.username | escape }}" target="_blank" rel="noopener">
-        <img
-          src="{{ bmc.button_image | default: 'https://cdn.buymeacoffee.com/buttons/v2/default-blue.png' }}"
-          alt="{{ bmc.text | default: 'Buy me a coffee' }}"
-          style="height: {{ bmc.button_height | default: 45 }}px; width: {{ bmc.button_width | default: 162 }}px;"
-        >
-      </a>
-    {% endif %}
-  {% endif %}
+{% assign vietnam_qr = site.vietnam_qr %}
 
-  {%- if sp and sp.enabled and sp.github -%}
-    <iframe
-      src="https://github.com/sponsors/{{ sp.github }}/button"
-      title="Sponsor {{ sp.github }}"
-      height="32"
-      width="114"
-      style="border: 0; border-radius: 6px;"
-    >
-    </iframe>
-  {%- endif -%}
+<div>
+  <div class="support-buttons" style="margin-top:1.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+    {% if bmc and bmc.enabled and bmc.username %}
+      {% if bmc.mode == 'floating' %}
+        <script
+          data-name="BMC-Widget"
+          data-cfasync="false"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+          data-id="{{ bmc.username | escape }}"
+          data-description="{{ bmc.description | default: 'Support me on Buy me a coffee!' | escape }}"
+          data-message="{{ bmc.message | escape }}"
+          data-color="{{ bmc.color | default: '#FF5F5F' }}"
+          data-position="{{ bmc.position | default: 'Right' }}"
+          data-x_margin="{{ bmc.x_margin | default: 18 }}"
+          data-y_margin="{{ bmc.y_margin | default: 18 }}"
+        ></script>
+      {% else %}
+        <a href="https://www.buymeacoffee.com/{{ bmc.username | escape }}" target="_blank" rel="noopener">
+          <img
+            src="{{ bmc.button_image | default: 'https://cdn.buymeacoffee.com/buttons/v2/default-blue.png' }}"
+            alt="{{ bmc.text | default: 'Buy me a coffee' }}"
+            style="height: {{ bmc.button_height | default: 45 }}px; width: {{ bmc.button_width | default: 162 }}px;"
+          >
+        </a>
+      {% endif %}
+    {% endif %}
+
+    {%- if sp and sp.enabled and sp.github -%}
+      <iframe
+        src="https://github.com/sponsors/{{ sp.github }}/button"
+        title="Sponsor {{ sp.github }}"
+        height="32"
+        width="114"
+        style="border: 0; border-radius: 6px;"
+      >
+      </iframe>
+    {%- endif -%}
+  </div>
+
+  <!-- Vietnam-only -->
+  <div id="vn-support" style="display:none; margin-top:20px;">
+    <h3>🇻🇳 Ủng hộ tôi tại Việt Nam</h3>
+    <p>Quét QR để ủng hộ qua Momo hoặc Vietcombank:</p>
+    <img src="/assets/img//momo_qr.png" alt="Momo QR" width="200" style="margin:10px;">
+    <img src="/assets/img/viet_qr.png" alt="VietQR" width="200" style="margin:10px;">
+  </div>
+
+  <!-- Manual toggle (fallback) -->
+  <p style="margin-top:10px;">
+    <a href="#" onclick="showVnSupport(); this.style.display='none'; return false;">
+      👋 Are you in Vietnam? Click here to see local support options.
+    </a>
+  </p>
+
+  <script>
+    function fetchCountry() {
+      return fetch('https://www.cloudflare.com/cdn-cgi/trace') // served by Cloudflare automatically
+        .then((res) => res.text())
+        .then((text) => {
+          let match = text.match(/loc=(\w+)/);
+          return match ? match[1] : null;
+        })
+        .catch(() => null);
+    }
+
+    function showVnSupport() {
+      const el = document.getElementById('vn-support');
+      if (el) el.style.display = 'block';
+    }
+
+    function detectVietnamUser() {
+      fetchCountry().then((code) => {
+        if (code === 'VN') {
+          showVnSupport();
+        }
+      });
+    }
+
+    // Lazy run after load
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(detectVietnamUser);
+      } else {
+        setTimeout(detectVietnamUser, 2000);
+      }
+    });
+  </script>
 </div>
