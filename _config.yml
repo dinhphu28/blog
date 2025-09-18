@@ -505,5 +505,4 @@ sponsor:
 
 vietnam_qr:
   enabled: true
-  location_detect: true
   fallback: true
