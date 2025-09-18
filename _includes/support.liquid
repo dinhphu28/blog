@@ -74,7 +74,7 @@
   </div>
 
   <!-- Manual toggle (fallback) -->
-  <p style="margin-top:10px;">
+  <p id="fallback-vn-support" style="display:block; margin-top:10px;">
     <a href="#" onclick="showVnSupport(); this.style.display='none'; return false;">
       👋 Are you in Vietnam? Click here to see local support options.
     </a>
@@ -92,13 +92,21 @@
     }
 
     function showVnSupport() {
-      const el = document.getElementById('vn-support');
-      if (el) el.style.display = 'block';
+      const vnSupport = document.getElementById('vn-support');
+      const fallbackButton = document.getElementById('fallback-vn-support');
+
+      if (vnSupport) vnSupport.style.display = 'block';
+      if (fallbackButton) fallbackButton.style.display = 'none';
+    }
+
+    function isCountryCodeVN(code) {
+      const isVN = code === 'VN';
+      return isVN;
     }
 
     function detectVietnamUser() {
       fetchCountry().then((code) => {
-        if (code === 'VN') {
+        if (isCountryCodeVN(code)) {
           showVnSupport();
         }
       });
