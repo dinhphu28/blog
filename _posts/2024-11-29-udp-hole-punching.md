@@ -116,4 +116,4 @@ In this article, we have discussed the concept of UDP hole punching and how it w
 
 In case you have any questions, feel free to ask or share your opinion in the comment section.
 
-If you care about my VPN setup with Hub and Spoke, read [this article](/blog/2024/hub-spoke-vpn/)
+If you care about my VPN setup with Hub and Spoke, read [this article]({% post_url 2024-11-29-hub-spoke-vpn %})
