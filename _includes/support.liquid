@@ -41,84 +41,88 @@
     {%- endif -%}
   </div>
 
-  <!-- Vietnam-only -->
-  <div id="vn-support" style="display:none; margin-top:20px;">
-    <p>🇻🇳 Ủng hộ tôi tại Việt Nam</p>
-    <p>Quét QR để ủng hộ qua Momo hoặc Vietcombank:</p>
-    <div class="d-flex justify-content-center flex-wrap" style="gap:1rem;">
-      <div>
-        {%
-          include figure.liquid
-          loading="lazy"
-          path="/assets/img/momo_qr.jpg"
-          height="200"
-          width="auto"
-          class="z-depth-1 rounded"
-          zoomable=false
-          alt="Momo QR"
-        %}
-      </div>
-      <div>
-        {%
-          include figure.liquid
-          loading="lazy"
-          path="/assets/img/viet_qr.jpg"
-          height="200"
-          width="auto"
-          class="z-depth-1 rounded"
-          zoomable=false
-          alt="VietQR"
-        %}
+  {% if vietnam_qr.enabled == true %}
+    <!-- Vietnam-only -->
+    <div id="vn-support" style="display:none; margin-top:20px;">
+      <p>🇻🇳 Ủng hộ tôi tại Việt Nam</p>
+      <p>Quét QR để ủng hộ qua Momo hoặc Vietcombank:</p>
+      <div class="d-flex justify-content-center flex-wrap" style="gap:1rem;">
+        <div>
+          {%
+            include figure.liquid
+            loading="lazy"
+            path="/assets/img/momo_qr.jpg"
+            height="200"
+            width="auto"
+            class="z-depth-1 rounded"
+            zoomable=false
+            alt="Momo QR"
+          %}
+        </div>
+        <div>
+          {%
+            include figure.liquid
+            loading="lazy"
+            path="/assets/img/viet_qr.jpg"
+            height="200"
+            width="auto"
+            class="z-depth-1 rounded"
+            zoomable=false
+            alt="VietQR"
+          %}
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Manual toggle (fallback) -->
-  <p id="fallback-vn-support" style="display:block; margin-top:10px;">
-    <a href="#" onclick="showVnSupport(); this.style.display='none'; return false;">
-      👋 Are you in Vietnam? Click here to see local support options.
-    </a>
-  </p>
+    <!-- Manual toggle (fallback) -->
+    {% if vietnam_qr.fallback == true %}
+      <p id="fallback-vn-support" style="display:block; margin-top:10px;">
+        <a href="#" onclick="showVnSupport(); this.style.display='none'; return false;">
+          👋 Are you in Vietnam? Click here to see local support options.
+        </a>
+      </p>
+    {% endif %}
 
-  <script>
-    function fetchCountry() {
-      return fetch('https://www.cloudflare.com/cdn-cgi/trace') // served by Cloudflare automatically
-        .then((res) => res.text())
-        .then((text) => {
-          let match = text.match(/loc=(\w+)/);
-          return match ? match[1] : null;
-        })
-        .catch(() => null);
-    }
+    <script>
+      function fetchCountry() {
+        return fetch('https://www.cloudflare.com/cdn-cgi/trace') // served by Cloudflare automatically
+          .then((res) => res.text())
+          .then((text) => {
+            let match = text.match(/loc=(\w+)/);
+            return match ? match[1] : null;
+          })
+          .catch(() => null);
+      }
 
-    function showVnSupport() {
-      const vnSupport = document.getElementById('vn-support');
-      const fallbackButton = document.getElementById('fallback-vn-support');
+      function showVnSupport() {
+        const vnSupport = document.getElementById('vn-support');
+        const fallbackButton = document.getElementById('fallback-vn-support');
 
-      if (vnSupport) vnSupport.style.display = 'block';
-      if (fallbackButton) fallbackButton.style.display = 'none';
-    }
+        if (vnSupport) vnSupport.style.display = 'block';
+        if (fallbackButton) fallbackButton.style.display = 'none';
+      }
 
-    function isCountryCodeVN(code) {
-      const isVN = code === 'VN';
-      return isVN;
-    }
+      function isCountryCodeVN(code) {
+        const isVN = code === 'VN';
+        return isVN;
+      }
 
-    function detectVietnamUser() {
-      fetchCountry().then((code) => {
-        if (isCountryCodeVN(code)) {
-          showVnSupport();
+      function detectVietnamUser() {
+        fetchCountry().then((code) => {
+          if (isCountryCodeVN(code)) {
+            showVnSupport();
+          }
+        });
+      }
+
+      // Lazy run after load
+      window.addEventListener('load', () => {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(detectVietnamUser);
+        } else {
+          setTimeout(detectVietnamUser, 2000);
         }
       });
-    }
-
-    // Lazy run after load
-    window.addEventListener('load', () => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(detectVietnamUser);
-      } else {
-        setTimeout(detectVietnamUser, 2000);
-      }
-    });
-  </script>
+    </script>
+  {% endif %}
 </div>
