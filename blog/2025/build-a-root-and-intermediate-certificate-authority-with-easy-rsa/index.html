@@ -24,22 +24,22 @@ set_var EASYRSA_REQ_OU         <span class="s2">"Intermediate"</span>
 <span class="nb">cat </span>pki/ca.crt pki/root-ca.crt <span class="o">&gt;</span> pki/ca-chain.crt
 </code></pre></div></div> <p>In case system warns missing files/directories, create them:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>pki/serial
 <span class="nb">mkdir </span>pki/certs_by_serial
-</code></pre></div></div> <p>You now have a functional Intermediate CA.</p> <h2 id="issue-certificate-for-microsoft-365-authentication">Issue Certificate for Microsoft 365 Authentication</h2> <h3 id="1-create-openssl-config">1. Create OpenSSL Config</h3> <p>Save as <code class="language-plaintext highlighter-rouge">user_openssl.cnf</code>:</p> <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[ req ]</span>
-<span class="py">default_bits</span>       <span class="p">=</span> <span class="s">384</span>
-<span class="py">prompt</span>             <span class="p">=</span> <span class="s">no</span>
-<span class="py">distinguished_name</span> <span class="p">=</span> <span class="s">dn</span>
-<span class="py">req_extensions</span>     <span class="p">=</span> <span class="s">req_ext</span>
-<span class="py">string_mask</span>        <span class="p">=</span> <span class="s">utf8only</span>
-<span class="py">default_md</span>         <span class="p">=</span> <span class="s">sha512</span>
-
-<span class="nn">[ dn ]</span>
-<span class="py">CN</span> <span class="p">=</span> <span class="s">Dinh Phu Nguyen</span>
-
-<span class="nn">[ req_ext ]</span>
-<span class="py">subjectAltName</span> <span class="p">=</span> <span class="s">@alt_names</span>
-
-<span class="nn">[ alt_names ]</span>
-<span class="py">otherName</span> <span class="p">=</span> <span class="s">1.3.6.1.4.1.311.20.2.3;UTF8:dinhphu@office.dinhphu28.com</span>
+</code></pre></div></div> <p>You now have a functional Intermediate CA.</p> <h2 id="issue-certificate-for-microsoft-365-authentication">Issue Certificate for Microsoft 365 Authentication</h2> <h3 id="1-create-openssl-config">1. Create OpenSSL Config</h3> <p>Save as <code class="language-plaintext highlighter-rouge">user_openssl.cnf</code>:</p> <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[ req ]</span><span class="w">
+</span><span class="py">default_bits</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">384</span>
+<span class="py">prompt</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">no</span>
+<span class="py">distinguished_name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">dn</span>
+<span class="py">req_extensions</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">req_ext</span>
+<span class="py">string_mask</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">utf8only</span>
+<span class="py">default_md</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">sha512</span>
+<span class="w">
+</span><span class="nn">[ dn ]</span><span class="w">
+</span><span class="py">CN</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">Dinh Phu Nguyen</span>
+<span class="w">
+</span><span class="nn">[ req_ext ]</span><span class="w">
+</span><span class="py">subjectAltName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">@alt_names</span>
+<span class="w">
+</span><span class="nn">[ alt_names ]</span><span class="w">
+</span><span class="py">otherName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">1.3.6.1.4.1.311.20.2.3;UTF8:dinhphu@office.dinhphu28.com</span>
 </code></pre></div></div> <h3 id="2-generate-key-and-csr">2. Generate Key and CSR</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl ecparam <span class="nt">-name</span> secp384r1 <span class="nt">-genkey</span> <span class="nt">-noout</span> <span class="nt">-out</span> dinhphu.key
 openssl req <span class="nt">-new</span> <span class="nt">-key</span> dinhphu.key <span class="nt">-out</span> dinhphu.csr <span class="nt">-config</span> user_openssl.cnf
 </code></pre></div></div> <h3 id="3-sign-the-csr-at-intermediate-ca">3. Sign the CSR at Intermediate CA</h3> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./easyrsa import-req /full/path/to/dinhphu.csr dinhphu
