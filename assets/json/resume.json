@@ -53,7 +53,7 @@
   "education": [
     {
       "institution": "HCMC University of Technology and Engineering",
-      "location": "Zurich, Switzerland",
+      "location": "Ho Chi Minh City, Vietnam",
       "url": "https://hcmute.edu.vn/",
       "area": "Software Engineering",
       "studyType": "Engineering",
@@ -91,7 +91,7 @@
   ],
   "languages": [
     {
-      "language": "German",
+      "language": "Vietnamese",
       "fluency": "Native speaker",
       "icon": ""
     },
@@ -114,8 +114,7 @@
       "name": "Customer Experience Platform",
       "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
       "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
+      "startDate": "2023-09",
       "url": "https://example.com"
     }
   ]
