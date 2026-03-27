@@ -8,4 +8,4 @@ services:
       - 8080:8080
       - 35729:35729
     volumes:
-      - .:/srv/jekyll
+      - .:/srv/jekyll:Z

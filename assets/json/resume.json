@@ -6,7 +6,7 @@
     "email": "dinhphu28@dinhphu28.com",
     "phone": "(+84) 935 841 912",
     "url": "https://www.dinhphu28.com",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "summary": "Innovative and detail-oriented Backend Developer with more than 5 years of experience in Java development and RESTful API design. Skilled at creating systems that not only solve current problems but are thoughtfully designed for future growth and easy maintenance. Known for reducing operational overhead and development time through clean architecture and scalable solutions. A strong team contributor who brings both technical expertise and a mindset focused on long-term efficiency. Guided by the principle: \"Don't let today's work steal your time in the future.\"",
     "location": {
       "address": "District 2",
       "postalCode": "700000",
@@ -27,9 +27,14 @@
       "name": "FPT Corporation",
       "position": "Software Engineer",
       "url": "https://fpt.com",
-      "startDate": "2023-09",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "startDate": "2023",
+      "summary": "A Customer Data Platform (CDP) for marketing automation used by the client’s marketing team to manage customers, contact history, users and activities.",
+      "highlights": [
+        "Design and organize the system to solve the business problems.",
+        "Continuously improve the system and team’s performance.",
+        "Spearhead research and development initiatives.",
+        "Improve the Git workflow, convention and CI/CD."
+      ]
     },
     {
       "name": "International Distribution Corporation",
@@ -53,17 +58,30 @@
   "education": [
     {
       "institution": "HCMC University of Technology and Engineering",
-      "location": "Ho Chi Minh City, Vietnam",
+      "location": "HCM City, Vietnam",
       "url": "https://hcmute.edu.vn/",
       "area": "Software Engineering",
       "studyType": "Engineering",
-      "startDate": "2018-08",
-      "endDate": "2022-12",
+      "startDate": "2018",
+      "endDate": "2022",
       "score": "7.94",
-      "courses": ["Theory of Relativity"]
+      "courses": ["Software Engineering", "AI/ML"]
     }
   ],
-  "awards": [],
+  "awards": [
+    {
+      "title": "100% Tuition Scholarship",
+      "date": "2018",
+      "awarder": "HCMC University of Technology and Engineering",
+      "summary": "Awarded a full-tuition scholarship for the first semester upon admission."
+    },
+    {
+      "title": "50% Tuition Scholarship",
+      "date": "2019",
+      "awarder": "HCMC University of Technology and Engineering",
+      "summary": "Awarded a 50% tuition scholarship for the second semester based on outstanding academic performance."
+    }
+  ],
   "certificates": [
     {
       "name": "Developing Secure Software",
@@ -76,17 +94,10 @@
   "publications": [],
   "skills": [
     {
-      "name": "Physics",
+      "name": "Back-end Development",
       "level": "Master",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
-      ]
+      "keywords": ["Java", "Spring Boot", "Quarkus", "Quantum Cryptography", "Quantum Communication", "Quantum Teleportation"]
     }
   ],
   "languages": [
@@ -114,7 +125,7 @@
       "name": "Customer Experience Platform",
       "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
       "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2023-09",
+      "startDate": "2023",
       "url": "https://example.com"
     }
   ]
