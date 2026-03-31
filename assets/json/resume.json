@@ -6,7 +6,7 @@
     "email": "dinhphu28@dinhphu28.com",
     "phone": "(+84) 935 841 912",
     "url": "https://www.dinhphu28.com",
-    "summary": "Innovative and detail-oriented Backend Developer with more than 5 years of experience in Java development and RESTful API design. Skilled at creating systems that not only solve current problems but are thoughtfully designed for future growth and easy maintenance. Known for reducing operational overhead and development time through clean architecture and scalable solutions. A strong team contributor who brings both technical expertise and a mindset focused on long-term efficiency. Guided by the principle: \"Don't let today's work steal your time in the future.\"",
+    "summary": "Back-end Software Engineer with 5 years of experience building scalable, high-performance systems using Java and distributed architectures. Designed and owned critical components, including a high-performance job scheduler (<1s latency) and campaign management system processing up to millions of events/day. Known for optimizing development workflows, reducing core feature development time and delivering maintainable, future-ready architectures while contributing solutions across teams.",
     "location": {
       "address": "District 2",
       "postalCode": "700000",
@@ -25,16 +25,11 @@
   "work": [
     {
       "name": "FPT Corporation",
-      "position": "Software Engineer",
+      "position": "Back-end Software Engineer",
       "url": "https://fpt.com",
       "startDate": "2023",
-      "summary": "A Customer Data Platform (CDP) for marketing automation used by the client’s marketing team to manage customers, contact history, users and activities.",
-      "highlights": [
-        "Design and organize the system to solve the business problems.",
-        "Continuously improve the system and team’s performance.",
-        "Spearhead research and development initiatives.",
-        "Improve the Git workflow, convention and CI/CD."
-      ]
+      "summary": "A software solution that centralizes customer data, interactions from all digital channels into single unified view, enabling analysis, management, and personalization of the end-to-end customer journey, boosting engagement and satisfaction.",
+      "highlights": ["Customer Experience Platform"]
     },
     {
       "name": "International Distribution Corporation",
@@ -42,16 +37,19 @@
       "url": "https://idb.com.vn",
       "startDate": "2022-02",
       "endDate": "2023-02",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "summary": "A centralized platform handling multi-channel customer interactions (voice, email, chat, social media), providing a unified customer view to improve service efficiency and personalization.",
+      "highlights": ["Contact Center"]
     },
     {
       "name": "NMT Tech",
       "position": "IT Specialist",
       "startDate": "2021-04",
       "endDate": "2022-02",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "summary": "",
+      "highlights": [
+        "Developed and maintained internal tools to support business operations.",
+        "Implemented solutions for industrial systems, including PLC communication for remote setup, control and monitoring."
+      ]
     }
   ],
   "volunteer": [],
@@ -60,8 +58,8 @@
       "institution": "HCMC University of Technology and Engineering",
       "location": "HCM City, Vietnam",
       "url": "https://hcmute.edu.vn/",
-      "area": "Software Engineering",
-      "studyType": "Engineering",
+      "area": "Faculty For High Quality Training",
+      "studyType": "Software Engineering",
       "startDate": "2018",
       "endDate": "2022",
       "score": "7.94",
@@ -95,9 +93,27 @@
   "skills": [
     {
       "name": "Back-end Development",
-      "level": "Master",
-      "icon": "fa-solid fa-hashtag",
-      "keywords": ["Java", "Spring Boot", "Quarkus", "Quantum Cryptography", "Quantum Communication", "Quantum Teleportation"]
+      "level": "Advanced",
+      "icon": "fa-solid fa-server",
+      "keywords": ["Java", "Spring Boot", "Quarkus", "REST APIs", "Microservices", "Distributed Systems"]
+    },
+    {
+      "name": "Data & Messaging",
+      "level": "Advanced",
+      "icon": "fa-solid fa-database",
+      "keywords": ["PostgreSQL", "MySQL", "Kafka", "RabbitMQ", "Event-driven Architecture"]
+    },
+    {
+      "name": "DevOps & Infrastructure",
+      "level": "Intermediate",
+      "icon": "fa-solid fa-gears",
+      "keywords": ["Docker", "Kubernetes", "CI/CD", "Linux", "Bash"]
+    },
+    {
+      "name": "Programming Languages",
+      "level": "Advanced",
+      "icon": "fa-solid fa-code",
+      "keywords": ["Java", "Scala", "Go"]
     }
   ],
   "languages": [
@@ -123,10 +139,30 @@
   "projects": [
     {
       "name": "Customer Experience Platform",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
+      "summary": "A software solution that centralizes customer data, interactions from all digital channels into single unified view, enabling analysis, management, and personalization of the end-to-end customer journey, boosting engagement and satisfaction.",
+      "highlights": [
+        "Designed and implemented a high-performance job scheduler replacing a latency-prone legacy system, reducing invocation latency from ~1 minute to <1s, eliminating job loss, and enabling bulk job registration within seconds.",
+        "Architected core system components for campaign management, supporting multiplexed marketing channels, template handling and external integrations, enabling future business adaptability.",
+        "Developed and optimized core system components processing up to 14M events/day, optimizing performance and scalability.",
+        "Enhanced system and team’s performance, reduced up to 60% core feature development time, contributing cross-team solutions.",
+        "Streamlined development workflow by improving convention and CI/CD pipelines."
+      ],
       "startDate": "2023",
-      "url": "https://example.com"
+      "url": "https://cexp.fpt.com"
+    },
+    {
+      "name": "Contact Center",
+      "summary": "A centralized platform handling multi-channel customer interactions (voice, email, chat, social media), providing a unified customer view to improve service efficiency and personalization.",
+      "highlights": [
+        "Collaborated with stakeholders to define product roadmap and deliver features aligned with business requirements.",
+        "Designed and developed back-end services and some front-end modules.",
+        "Built internal tools to automate operational tasks, improving team productivity and reducing manual effort.",
+        "Defined development workflows and mentored new team members.",
+        "Deployed and maintained production systems, ensuring reliability and smooth operation."
+      ],
+      "startDate": "2022",
+      "endDate": "2023",
+      "url": "#"
     }
   ]
 }
