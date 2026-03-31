@@ -28,8 +28,14 @@
       "position": "Back-end Software Engineer",
       "url": "https://fpt.com",
       "startDate": "2023",
-      "summary": "A software solution that centralizes customer data, interactions from all digital channels into single unified view, enabling analysis, management, and personalization of the end-to-end customer journey, boosting engagement and satisfaction.",
-      "highlights": ["Customer Experience Platform"]
+      "summary": "Developed and owned backend systems for a large-scale customer experience platform, focusing on distributed architecture, performance optimization, and system scalability.",
+      "highlights": [
+        "Designed and implemented a high-performance job scheduler (<1s latency), replacing a legacy system.",
+        "Architected core campaign management components supporting multi-channel marketing and external integrations.",
+        "Processed up to 14M events/day with optimized performance and scalability.",
+        "Reduced core feature development time by up to 60% through system and workflow improvements.",
+        "Improved CI/CD pipelines and engineering conventions to enhance team productivity."
+      ]
     },
     {
       "name": "International Distribution Corporation",
@@ -37,8 +43,14 @@
       "url": "https://idb.com.vn",
       "startDate": "2022-02",
       "endDate": "2023-02",
-      "summary": "A centralized platform handling multi-channel customer interactions (voice, email, chat, social media), providing a unified customer view to improve service efficiency and personalization.",
-      "highlights": ["Contact Center"]
+      "summary": "Developed backend services for a multi-channel contact center platform, focusing on system integration, reliability, and operational efficiency.",
+      "highlights": [
+        "Designed and developed backend services supporting multi-channel customer interactions (voice, email, chat, social).",
+        "Collaborated with stakeholders to define and deliver features aligned with business requirements.",
+        "Built internal tools to automate operational tasks, reducing manual effort and improving team productivity.",
+        "Contributed to system deployment and maintenance, ensuring reliability and stable production operations",
+        "Improved development workflows and onboarding processes for new team members"
+      ]
     },
     {
       "name": "NMT Tech",
@@ -161,8 +173,7 @@
         "Deployed and maintained production systems, ensuring reliability and smooth operation."
       ],
       "startDate": "2022",
-      "endDate": "2023",
-      "url": "#"
+      "endDate": "2023"
     }
   ]
 }
