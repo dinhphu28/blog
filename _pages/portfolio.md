@@ -4,7 +4,7 @@ permalink: /portfolio/
 title: "portfolio"
 description: "Redirect to portfolio page."
 nav: true
-nav_order: 6
+nav_order: 4
 redirect: https://portfolio.dinhphu28.com
 ---
 
