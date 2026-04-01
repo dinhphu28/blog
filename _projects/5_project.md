@@ -5,6 +5,7 @@ description: Just for fun simple Apple-liked Dictionary to quickly look up words
 img: /assets/img/proj_dictionary-1.png
 importance: 3
 category: fun
+giscus_comments: true
 ---
 
 I think any people who read a lot have an headache when they want to quickly look up a word but every open the browser, search for the word, and then come back to the book.

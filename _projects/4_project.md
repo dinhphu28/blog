@@ -5,6 +5,7 @@ description: CLI tools with ASCII art for text visualization.
 img: /assets/img/hash-visualization-ascii.png
 importance: 3
 category: fun
+giscus_comments: true
 related_publications: true
 ---
 
