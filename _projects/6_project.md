@@ -5,6 +5,7 @@ description: Just for fun simple Snake game implemented in Clojure.
 img: /assets/img/proj_snake-clj-1.png
 importance: 4
 category: fun
+giscus_comments: true
 ---
 
 Classic Snake game built with Clojure using Quil, a Clojure wrapper around Processing for rendering.
