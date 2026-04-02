@@ -1,7 +1,7 @@
 ---
 layout: page
 title: more
-nav: true
+nav: false
 nav_order: 5
 dropdown: true
 children:
@@ -10,4 +10,7 @@ children:
   - title: divider
   - title: people
     permalink: /people/
+  - title: divider
+  - title: portfolio
+    permalink: /portfolio/
 ---
