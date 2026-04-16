@@ -1,0 +1,52 @@
+<svg width="600" height="100" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- ✅ background -->
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Array boxes (values = 0) -->
+  <g font-family="monospace" font-size="14" text-anchor="middle">
+    <!-- boxes -->
+    <!-- each box width = 50 -->
+    <!-- row Y = 80 -->
+    <!-- values -->
+    <g>
+      <rect x="50"  y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="100" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="150" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="200" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="250" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="300" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="350" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="400" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="450" y="10" width="50" height="40" fill="none" stroke="black"/>
+      <rect x="500" y="10" width="50" height="40" fill="none" stroke="black"/>
+
+      <!-- values (all 0) -->
+      <text x="75"  y="35">0</text>
+      <text x="125" y="35">0</text>
+      <text x="175" y="35">0</text>
+      <text x="225" y="35">0</text>
+      <text x="275" y="35">0</text>
+      <text x="325" y="35">0</text>
+      <text x="375" y="35">0</text>
+      <text x="425" y="35">0</text>
+      <text x="475" y="35">0</text>
+      <text x="525" y="35">0</text>
+    </g>
+
+    <!-- indices below -->
+    <g font-size="12">
+      <text x="75"  y="70">0</text>
+      <text x="125" y="70">1</text>
+      <text x="175" y="70">2</text>
+      <text x="225" y="70">3</text>
+      <text x="275" y="70">4</text>
+      <text x="325" y="70">5</text>
+      <text x="375" y="70">6</text>
+      <text x="425" y="70">7</text>
+      <text x="475" y="70">8</text>
+      <text x="525" y="70">9</text>
+    </g>
+  </g>
+
+</svg>
+
