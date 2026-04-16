@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Bloom Filter and How I prevent tons of message duplication"
-date: 2026-04-15 11:30:00+0700
-description: Bloom Filter is a probabilistic data structure with low cost of memory used to test whether an object is a member of a set.
+title: "Bloom Filter and How I Prevent Tons of Message Duplication"
+date: 2026-04-16 17:57:00+0700
+description: Bloom Filter is a probabilistic data structure with low memory cost, used to test whether an object is a member of a set.
 mermaid:
   enabled: false
   zoomable: false
@@ -16,37 +16,36 @@ toc:
 
 ## Problem
 
-Our Customer Experience Platform system which processes tens millions messages a day and we need to prevent sending duplicated messages to end user in recent week.
+Our Customer Experience Platform processes tens of millions of messages per day, and we need to prevent sending duplicate messages to end users within a recent time window.
 
-There are many way to do this, such as:
+There are many ways to do this, such as:
 
 - Database lookup
-- Save and lookup message key in Redis
+- Saving and looking up message keys in Redis
 
-The first one is a bad idea, with hundreds million sent messages a week, each message must lookup to check if it has been sent or not that takes so much time.
-Result in system takes so much time to send messages and put the database to high pressure even though we have indexed them.
+The first option is a bad idea. With hundreds of millions of messages sent each week, every message would require a lookup to check whether it has already been sent. This takes a lot of time and puts high pressure on the database, even with proper indexing.
 
-The Redis way is quite good if we doesn't have many data. But it will take us much memory. With limited RAM, this solution isn't really the good idea.
+The Redis approach is quite good if the dataset is small. However, it consumes a lot of memory. With limited RAM, this solution is not ideal.
 
-In that time, I think that we must have something better.
+At that time, I thought we must have something better.
 
-That is Bloom Filter, just a data structure but can do this job efficiently with just MBs level of memory.
+That is **Bloom Filter** — just a data structure, but it can do this job efficiently with only MB-level memory.
 
-The idea is before send each message, we will check whether this message has been sent. If not, just sent it, then add to Bloom Filter.
+The idea is before sending each message, we check whether it has already been sent. If not, we send it and then add it to the Bloom Filter.
 
-The downside is there are some False Positive result.
+The downside is that there can be false positives.
 
 ## What is Bloom Filter
 
-Bloom Filter is space-efficient probabilistic data structure used to check whether an element is a member of a set.
+A Bloom Filter is a space-efficient probabilistic data structure used to check whether an element is a member of a set.
 
-So why we call it probabilistic, because there might be some False Positive results.
+Why is it called _probabilistic_? Because there can be false positive results.
 
-Example in my case, system will check if the same message has been sent. If result is false, system can 100% confirm that it's never be sent. Then just sent it without database or Redis needed.
+In my case, the system checks whether the same message has been sent before. If the result is false, we can be 100% sure that it has never been sent, so we can safely send it without any database or Redis lookup.
 
-But if result is true, we cannot completely sure that it has been sent. This is mean of False Positive.
+However, if the result is true, we cannot be completely sure that it has been sent. This is what we call a false positive.
 
-Bloom Filter is a fixed size bit array. We call the size is **m**.
+A Bloom Filter is a fixed-size bit array. We denote its size as **m**.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -57,11 +56,11 @@ Bloom Filter is a fixed size bit array. We call the size is **m**.
     Initialize Bloom Filter with size m=10
 </div>
 
-We need **k** unique hash function to calculate hash values for each input.
+We need **k** independent hash functions to compute hash values for each input.
 
-When an element is added to filter, we will hash it with all **k** hash function. Then do the modulo with **m**, the results are indices of bit in array, and we will set them to 1.
+When an element is added to the filter, we hash it using all **k** hash functions. Then we take modulo **m** to get indices in the bit array, and set those positions to 1.
 
-E.g. If we want to add "dinhphu28" to filter with size **m**=10 that initialized with all zero and **k**=3 hash functions. We calculate the indices as below:
+For example, suppose we want to add `"dinhphu28"` to a filter with size **m** = 10 (initialized with all zeros) and **k** = 3 hash functions:
 
 $$
 \begin{aligned}
@@ -71,7 +70,7 @@ h3(\texttt{"dinhphu28"}) \bmod 10 &= 8
 \end{aligned}
 $$
 
-We will set all bits at indices 3, 2, 8 to 1.
+We set the bits at indices 3, 2, and 8 to 1.
 
 Now we have:
 
@@ -84,17 +83,17 @@ Now we have:
     Add "dinhphu28"
 </div>
 
-Again with "jack":
+Now, add `"jack"`:
 
 $$
 \begin{aligned}
-h1(\texttt{"jack"}) \bmod 10 = 1 \\
-h2(\texttt{"jack"}) \bmod 10 = 5 \\
-h3(\texttt{"jack"}) \bmod 10 = 8
+h1(\texttt{"jack"}) \bmod 10 &= 1 \\
+h2(\texttt{"jack"}) \bmod 10 &= 5 \\
+h3(\texttt{"jack"}) \bmod 10 &= 8
 \end{aligned}
 $$
 
-Then we set bits at 1, 5, 8 to 1. The result is:
+We set bits at indices 1, 5, and 8 to 1:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -105,22 +104,24 @@ Then we set bits at 1, 5, 8 to 1. The result is:
     Add "jack"
 </div>
 
-So when we want to check if "dinhphu28" exists in the filter, we calculate indices again, but instead of write to filter, we will check if all these indices are set to 1.
-If all bits are set, we can say "dinhphu28" probably exists in filter. If contain any of bit in these indices is 0, we can sure that "dinhphu28" is not exist in filter.
+To check whether `"dinhphu28"` exists in the filter, we compute the indices again. Instead of writing, we check whether all corresponding bits are set to 1.
 
-So why I said **probably**, let's do this example:
+- If all bits are 1 → the element _probably_ exists
+- If any bit is 0 → the element definitely does not exist
 
-We want to check if "adam" exists:
+So why do I say **probably**? Let’s look at this example.
+
+Check `"adam"`:
 
 $$
 \begin{aligned}
-h1(\texttt{"adam"}) \bmod 10 = 5 \\
-h2(\texttt{"adam"}) \bmod 10 = 1 \\
-h3(\texttt{"adam"}) \bmod 10 = 2
+h1(\texttt{"adam"}) \bmod 10 &= 5 \\
+h2(\texttt{"adam"}) \bmod 10 &= 1 \\
+h3(\texttt{"adam"}) \bmod 10 &= 2
 \end{aligned}
 $$
 
-We can see that, the indices 5, 1, 2 is set, but we has never add "adam" to the filter.
+All indices (5, 1, 2) are already set, even though we never added `"adam"` to the filter.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -131,26 +132,28 @@ We can see that, the indices 5, 1, 2 is set, but we has never add "adam" to the 
     Check "adam"
 </div>
 
-Because of these bits have been already set by other elements, we will get the result that "adam" probably exists in filter, but it's not, result in False Positive.
+Because these bits were set by other elements, the filter returns that `"adam"` probably exists — but it does not. This is a false positive.
 
-## How I resolve the duplication problem
+## How I Resolve the Duplication Problem
 
-Each message have a unique key, in my case is combine of message template id and recipient id.
-I will add this key to Bloom Filter after sending message.
-Before sending each message, I will check if this key exists in filter or not.
+Each message has a unique key. In my case, it is a combination of the message template ID and the recipient ID.
 
-If the result is false, I can sure that this message has never been sent, then just send it without database lookup needed.
-In case of true, it might be False Positive, but I will just drop it to prevent duplication,
-because the cost of sending duplicated message is much higher than the cost of dropping some messages.
+After sending a message, I add this key to the Bloom Filter. Before sending a message, I check whether the key exists in the filter.
 
-For dropped messages, I will push them to Kafka for offline rebuild dataset and handle them later.
+- If the result is false → I am sure the message has never been sent → send it
+- If the result is true → it might be a false positive → I drop it
 
-With this way, I can prevent tons of duplicated messages with just MBs level of memory used by Bloom Filter.
+I choose to drop messages in case of uncertainty because the cost of sending duplicate messages is much higher than the cost of dropping a few valid ones.
 
-Some folks might ask, how about multiple instances of service, how to share the Bloom Filter data?
+For dropped messages, I push them to Kafka for offline processing to rebuild the dataset and handle them later.
 
-The answer is we can use Redis Bloom, a Redis module that provides Bloom Filter data structure.
-With Redis Bloom, we can share the Bloom Filter data across multiple instances of service.
+With this approach, I can prevent tons of duplicate messages while using only MBs of memory for the Bloom Filter.
+
+Some people might ask: what about multiple service instances? How do we share the Bloom Filter?
+
+The answer is **Redis Bloom**, a Redis module that provides Bloom Filter data structures.
+
+With Redis Bloom, we can share the filter across multiple service instances.
 
 ```mermaid
 ---
