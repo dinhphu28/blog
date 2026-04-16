@@ -4,7 +4,7 @@ title: "Bloom Filter and How I Prevent Tons of Message Duplication"
 date: 2026-04-16 17:57:00+0700
 description: Bloom Filter is a probabilistic data structure with low memory cost, used to test whether an object is a member of a set.
 mermaid:
-  enabled: false
+  enabled: true
   zoomable: false
 tags: system-design data-structure
 categories: software
