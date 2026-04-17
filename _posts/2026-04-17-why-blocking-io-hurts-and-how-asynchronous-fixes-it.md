@@ -94,6 +94,6 @@ Especially when we use Virtual Thread that allow us to create almost unlimited t
 
 For developer, we must manually split the code into pieces. We must write the "start" part, then provide a callback for the "finish" part. The thread is freed because we explicitly ended the function.
 So the code is harder to read, debug. I think everyone knows "callback hell". Anyway, we have other syntax makes it easier like async/await in JavaScript, for/yield in Scala.
-But I think the "linear" coding style like blocking is easier to swallow.
+But I think the "linear" coding style like synchronous is easier to swallow.
 
 In next article, I will show you how the Virtual Thread works and why we should use it.
