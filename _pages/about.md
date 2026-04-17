@@ -22,7 +22,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Hi, I'm Dinh Phu, a software engineer from Vietnam. I'm interested in software engineering, programming languages, and software development. I'm also a fan of open source software, which helps me to learn and contribute to the community, and I'm always looking for new opportunities to learn and grow.
+Hi, I'm Dinh Phu, a software engineer and blogger from Vietnam. I'm interested in software engineering, programming languages, and software development. I'm also a fan of open source software, which helps me to learn and contribute to the community, and I'm always looking for new opportunities to learn and grow.
 
 With me, learning is a lifelong journey, more knowledge, more experience, more fun. Not only software knowledge can help me to solve problems, but also the knowledge of other fields can help me to think and solve problems in a different way. I'm always open to new ideas and new ways of thinking.
 
