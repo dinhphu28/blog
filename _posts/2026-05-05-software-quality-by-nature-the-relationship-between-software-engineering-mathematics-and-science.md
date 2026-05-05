@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Software Quality by Nature: The relationship between Software Engineering, Mathematics and Science"
-date: 2026-05-04 13:42:00+0700
+date: 2026-05-05 13:42:00+0700
 description: People make software, write code and test it day by day, but is there anyone really thinking about the essence of software quality? In this article, I will talk about the relationship between Software Engineering, Mathematics and Science, and how we can use them to verify the software.
 mermaid:
   enabled: true
