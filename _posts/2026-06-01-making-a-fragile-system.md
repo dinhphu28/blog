@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Making a Fragile System"
-date: 2026-06-01 13:42:00+0700
+date: 2026-06-01 15:22:00+0700
 description: Some folks just want to make it work, but they don't care about the iceberg of software development, which leads to a fragile system. Let me tell you the story of Jack, who is a software engineer but becomes a support guy because of his mindset.
 mermaid:
   enabled: false
