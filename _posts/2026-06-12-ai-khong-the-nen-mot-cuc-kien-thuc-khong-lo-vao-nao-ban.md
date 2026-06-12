@@ -7,7 +7,7 @@ mermaid:
   enabled: false
   zoomable: false
 tags: discovery learning ai software linux
-categories: utilities
+categories: writing
 citation: false
 giscus_comments: true
 toc:
