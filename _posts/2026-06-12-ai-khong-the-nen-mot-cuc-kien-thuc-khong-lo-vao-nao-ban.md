@@ -22,6 +22,15 @@ Làm software cũng vậy. Bạn muốn overview Linux kernel? AI có thể tóm
 
 Điểm quan trọng là: trước khi biết đến `io_uring`, bạn phải có một chuỗi câu hỏi trong đầu. CPU thực sự làm gì? Vì sao I/O blocking lại làm lãng phí tài nguyên? Thread là gì? Tại sao không tạo thật nhiều thread? Context switch tốn kém ra sao? Linux xử lý I/O như thế nào? Từ đó bạn mới đi đến `poll`, `epoll`, rồi `io_uring`.
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/discovery-nature-1.png" title="quick lookup" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Initialize Bloom Filter with size m=10
+</div>
+
 AI có thể trả lời rất tốt khi bạn đã biết mình cần hỏi gì. Nhưng nếu trong đầu bạn chưa có xâu chuỗi của vấn đề, chưa biết có những “cánh cửa” nào tồn tại, thì AI thường chỉ đưa cho bạn một bản tóm tắt chung chung. Với người đã biết rồi, bản tóm tắt đó quá cơ bản. Với người chưa biết gì, nó lại giống như một bức tường trơn, trên đó có những cánh cửa không tên, cùng màu với tường, và họ thậm chí không biết phải gõ vào đâu.
 
 Nguồn gốc của việc học, tìm hiểu và khám phá vẫn không thay đổi. Con người vẫn phải tò mò, va chạm, đọc, thử, sai, gặp từ khóa mới, đặt câu hỏi mới, rồi tiếp tục đào sâu. Đôi khi ta biết đến một chủ đề không phải vì ta đã chủ động tìm nó từ đầu, mà vì tình cờ thấy trong một bài blog (ý là mấy ông lên đọc blog của tôi đi), một đoạn code, một môn học, một cuộc thảo luận, hoặc trong lúc đang tìm hiểu một thứ khác.
@@ -31,4 +40,3 @@ AI làm thay đổi tốc độ tiếp cận, không làm thay đổi bản ch�
 AI không thay thế bộ não của chúng ta. Nó giống một người chỉ đường tốt hơn là một thiết bị truyền tri thức trực tiếp vào não. Nó có thể giúp ta đi nhanh hơn, nhưng không thể đi thay ta.
 
 Thấy bây giờ nhiều anh em thần thánh hóa AI quá, cứ tưởng nó là một thứ thần kỳ có thể biến mọi thứ thành mì ăn liền. Cái vấn đề này mình nói tới chắc khi nào có bánh mì trí nhớ của Doraemon hoặc Elon Musk làm xong được cái Neuralink sync thẳng thông tin vào não thì được. Dùng AI hỗ trợ thôi chứ não vẫn phải dùng của mình nha anh em. Một ngày không suy nghĩ là khó chịu lắm!
-
