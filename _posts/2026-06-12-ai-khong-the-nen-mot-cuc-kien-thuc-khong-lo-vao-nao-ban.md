@@ -30,5 +30,5 @@ AI làm thay đổi tốc độ tiếp cận, không làm thay đổi bản ch�
 
 AI không thay thế bộ não của chúng ta. Nó giống một người chỉ đường tốt hơn là một thiết bị truyền tri thức trực tiếp vào não. Nó có thể giúp ta đi nhanh hơn, nhưng không thể đi thay ta.
 
-Thấy bây giờ nhiều anh em thần thánh hóa AI quá, cứ tưởng nó là một thứ thần kỳ có thể biến mọi thứ thành mì ăn liền. Cái vấn đề này mình nói tới chắc khi nào Elon Musk làm xong được cái Neuralink sync thẳng thông tin vào não thì được. Dùng AI hỗ trợ thôi chứ não vẫn phải dùng của mình nha anh em. Một ngày không suy nghĩ là khó chịu lắm!
+Thấy bây giờ nhiều anh em thần thánh hóa AI quá, cứ tưởng nó là một thứ thần kỳ có thể biến mọi thứ thành mì ăn liền. Cái vấn đề này mình nói tới chắc khi nào có bánh mì trí nhớ của Doraemon hoặc Elon Musk làm xong được cái Neuralink sync thẳng thông tin vào não thì được. Dùng AI hỗ trợ thôi chứ não vẫn phải dùng của mình nha anh em. Một ngày không suy nghĩ là khó chịu lắm!
 
