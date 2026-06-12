@@ -28,7 +28,7 @@ Làm software cũng vậy. Bạn muốn overview Linux kernel? AI có thể tóm
     </div>
 </div>
 <div class="caption">
-    Initialize Bloom Filter with size m=10
+    Những cánh cửa cần đi qua để đến `io_uring`
 </div>
 
 AI có thể trả lời rất tốt khi bạn đã biết mình cần hỏi gì. Nhưng nếu trong đầu bạn chưa có xâu chuỗi của vấn đề, chưa biết có những “cánh cửa” nào tồn tại, thì AI thường chỉ đưa cho bạn một bản tóm tắt chung chung. Với người đã biết rồi, bản tóm tắt đó quá cơ bản. Với người chưa biết gì, nó lại giống như một bức tường trơn, trên đó có những cánh cửa không tên, cùng màu với tường, và họ thậm chí không biết phải gõ vào đâu.
