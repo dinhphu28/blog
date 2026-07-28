@@ -6,7 +6,7 @@ description: "A research-driven look at how engineering environments shape behav
 mermaid:
   enabled: false
   zoomable: false
-tags: system-design, cognitive-science, engineering-culture, ai-in-software-development, psychological-safety
+tags: system-design cognitive-science engineering-culture ai-in-software-development psychological-safety
 categories: writing software management
 citation: false
 giscus_comments: true
