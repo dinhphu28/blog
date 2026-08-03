@@ -4,7 +4,7 @@ permalink: /cv/
 title: cv
 nav: true
 nav_order: 3
-cv_pdf: https://assets.dinhphu28.com/curriculum-vitae.pdf
+cv_pdf: https://assets.dinhphu28.com/Nguyen-Dinh-Phu-Backend-Engineer.pdf
 description: >
   Experience in designing and operating distributed backend systems
   with a focus on performance, scalability, and reliability.
