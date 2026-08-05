@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cache Stampede Problem and Mutex Lock"
-date: 2026-06-12 13:30:00+0700
+date: 2026-08-05 10:08:00+0700
 description: "Cache-aside with mutex locking is a design pattern that used to prevent database hit when cache is expired, this is known as cache stampede problem."
 mermaid:
   enabled: false
